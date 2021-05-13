@@ -12,6 +12,7 @@ class VaadNavbar extends React.Component{
 render(){
  
     return(
+        
         <Navbar bg="light" expand="lg">
             <Navbar.Brand href="/#/">LOGO</Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />

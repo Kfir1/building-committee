@@ -10,6 +10,8 @@ import VaadNavbar from "./components/VaadNavbar"
 import { Container } from 'react-bootstrap';
 import Dashboard from './pages/Dashboard';
 import jsonData from './data/users.json';
+import issuesData from './data/issues.json';
+
 
 class App extends React.Component{
       constructor(props) {
@@ -17,8 +19,8 @@ class App extends React.Component{
        
         this.state = {
           allUsers: jsonData,
-          activeUser: null 
-
+          activeUser: null, 
+          allIssues: issuesData,
         }
       }
 
@@ -42,16 +44,16 @@ class App extends React.Component{
       
       
 
-      // addUser = (newUser) =>{
+      addUser = (newUser) =>{
    
-      //   this.setState({
-      //     activeUser: newUser,
-      //     allUsers: this.state.allUsers.concat(newUser),
-
-      //   })
-      // }
+        this.setState({
+          activeUser: newUser,
+          allUsers: this.state.allUsers.concat(newUser),
+            
+        })
+      }
   
-      // }
+      
       login = (userObj) => {
         this.setState({
           activeUser: userObj
@@ -78,7 +80,8 @@ class App extends React.Component{
                         </Route>
                         <Route exact path="/Signup">
                           <Signup
-
+                            allUsers={this.state.allUsers}
+                            addUser={this.addUser}
                           ></Signup>
                         </Route>
                         {/* <Route exact path="/message">
@@ -89,6 +92,7 @@ class App extends React.Component{
                            <Route exact path="/dashboard">
                           <Dashboard 
                           activeUser={this.state.activeUser}
+                          allIssues={this.state.allIssues}
                           >
                           </Dashboard>
                         </Route>

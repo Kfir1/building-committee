@@ -18,10 +18,15 @@ class Dashboard extends React.Component{
             // check if activeUser is a committee memeber. if true render CommitteeDashboard component, else render TenantDashboard component
         if(this.props.activeUser.isCommitteeMember){
 
-            template = <CommitteeDashboard></CommitteeDashboard>
+            template = <CommitteeDashboard
+            allIssues = {this.props.allIssues}
+            ></CommitteeDashboard>
         }
         else{
-            template = <TenantDashboard></TenantDashboard>
+            template = <TenantDashboard
+            allIssues = {this.props.allIssues}
+            >
+            </TenantDashboard>
         }
         return(
             <div>

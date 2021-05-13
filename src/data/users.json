@@ -4,13 +4,18 @@
         "id":1,
         "name": "John doe",
         "email": "skarlinski@gmail.com",
-        "password": "123"
+        "password": "123",
+        "address": "rgrg",
+        "city": "rgrg"
+        
     },
     {
         "isCommitteeMember": false,
         "id":2,
         "name": "sara doe",
         "email": "sara@gmail.com",
-        "password": "abc"
+        "password": "abc",
+        "address": "rgrg",
+        "city": "rgrgr"
     }
 ]
