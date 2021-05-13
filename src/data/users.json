@@ -1,0 +1,16 @@
+[
+    {  
+         "isCommitteeMember": true,
+        "id":1,
+        "name": "John doe",
+        "email": "skarlinski@gmail.com",
+        "password": "123"
+    },
+    {
+        "isCommitteeMember": false,
+        "id":2,
+        "name": "sara doe",
+        "email": "sara@gmail.com",
+        "password": "abc"
+    }
+]
