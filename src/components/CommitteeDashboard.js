@@ -7,13 +7,16 @@ import { Accordion, Card, Button } from 'react-bootstrap';
 class CommitteeDashboard extends React.Component{
     constructor(props){
         super(props)
+        this.state= {
+          
     }
 
+}
 
 render(){
     return (
         <div>
-           <h1>New Reported Issues</h1>
+           <h1>Reported Issues</h1>
            <Accordion defaultActiveKey="0">
   <Card>
     <Card.Header>

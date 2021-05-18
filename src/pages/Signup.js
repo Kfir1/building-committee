@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Button, Form } from 'react-bootstrap';
+import { Button, Col, Container, Form, Image, Row } from 'react-bootstrap';
 
 
 
@@ -34,7 +34,7 @@ userInfo = () => {
     }
     this.props.addUser(memberObj)
 
-    //empty inputs
+    //empty inputs 
     this.setState({
         name: '',
         email: '',
@@ -60,36 +60,49 @@ render(){
 
     return(
         <div>
-                <Form>
-            <Form.Group controlId="formBasicEmail">
-                <Form.Label>Name</Form.Label>
+            <h1 style={{margin: "50px 0 70px 0"}}>Enter Your Details</h1>
+            {/* <Container> */}
+
+
+
+            <Row >  
+            <Col md={4} sm={12} lg={6}>
+                <Form >
+            <Form.Group controlId="formBasicEmail" style={{marginBottom: "10px"}}>
+                <Form.Label style={{fontSize: "12px"}}>Name:</Form.Label>
                 <Form.Control value={this.state.name} type="text" placeholder="Enter Name" onChange={(event) => {this.signUpInput('name',event.target.value)}}/>
 
             </Form.Group>
-            <Form.Group controlId="formBasicEmail">
-                <Form.Label>Email address</Form.Label>
+            <Form.Group controlId="formBasicEmail" style={{marginBottom: "10px"}}>
+                <Form.Label style={{fontSize: "12px"}}>Email Address:</Form.Label>
                 <Form.Control value={this.state.email} type="email" placeholder="Enter Email" onChange={(event) => {this.signUpInput('email',event.target.value)}}/>
 
-            </Form.Group>  <Form.Group controlId="formBasicEmail">
-                <Form.Label>Password</Form.Label>
+            </Form.Group>  <Form.Group controlId="formBasicEmail" style={{marginBottom: "10px"}}>
+                <Form.Label style={{fontSize: "12px"}}>Password:</Form.Label>
                 <Form.Control value={this.state.password} type="Password" placeholder="Password" onChange={(event) => {this.signUpInput('password',event.target.value)}}/>
 
-            </Form.Group>  <Form.Group controlId="formBasicEmail">
-                <Form.Label>Address</Form.Label>
+            </Form.Group>  <Form.Group controlId="formBasicEmail" style={{marginBottom: "10px"}}>
+                <Form.Label style={{fontSize: "12px"}}>Address:</Form.Label>
                 <Form.Control value={this.state.address} type="text" placeholder="Address" onChange={(event) => {this.signUpInput('address',event.target.value)}}/>
 
             </Form.Group>
-            <Form.Group controlId="formBasicPassword">
-                <Form.Label>City</Form.Label>
+            <Form.Group controlId="formBasicPassword" style={{marginBottom: "10px"}}>
+                <Form.Label style={{fontSize: "12px"}}>City:</Form.Label>
                 <Form.Control value={this.state.city} type="text" placeholder="City" onChange={(event) => {this.signUpInput('city',event.target.value)}}/>
             </Form.Group>
-            <Form.Group controlId="formBasicCheckbox">
+            <Form.Group controlId="formBasicCheckbox" style={{marginBottom: "10px"}}>
             </Form.Group>
-            <Button variant="primary" type="button" onClick={this.userInfo}>
+            <Button  style={{margin: "20px 0 20px 0"}} variant="primary" type="button" onClick={this.userInfo}>
                 Submit
             </Button>
             </Form>
+            </Col>
+            <Col md={4} sm={12} lg={6}>
+            <Image style={{width: "450px", borderRadius: "50px" }} src="https://i.pinimg.com/originals/84/ba/9e/84ba9e7f25805711179b64d2d623d1e0.jpg"  />
             {/* {allUsers} */}
+            </Col>
+            </Row>
+            {/* </Container> */}
     </div>
     )
 }

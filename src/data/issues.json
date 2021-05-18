@@ -1,18 +1,25 @@
 [
     {
         "id": 1,
-        "issueTitle": "issue number 1",
-        "description": "some desc1"
+        "issueTitle": "Issue number 1",
+        "description": "some desc1",
+        "priority": "urgent",
+        "image": "image"
     },
     {
         "id": 2,
-        "issueTitle": "issue number 2",
-        "description": "some desc2"
+        "issueTitle": "Issue number 2",
+        "description": "some desc2",
+        "priority": "urgent",
+        "image": "image"
     },
     {
         "id": 3,
-        "issueTitle": "issue number 3",
-        "description": "some desc3"
+        "issueTitle": "Issue number 3",
+        "description": "some desc3",
+        "priority": "urgent",
+        "image": "image"
+
     }
 
 ]
