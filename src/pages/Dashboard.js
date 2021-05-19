@@ -27,6 +27,9 @@ class Dashboard extends React.Component{
             
             template = <CommitteeDashboard
             allIssues = {this.props.allIssues}
+            addIssue={this.props.addIssue}
+            removeIssue={this.props.removeIssue}
+            activeUser={this.props.activeUser}
             ></CommitteeDashboard>
         }
         else if(this.props.activeUser) {

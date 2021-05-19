@@ -3,6 +3,7 @@ import React from 'react';
 import { Accordion, Card, Button, Modal, Row, Col, Form } from 'react-bootstrap';
 
 import 'bootstrap/dist/css/bootstrap.css';
+import IssuesList from './issuesList';
 
 class TenantDashboard extends React.Component{
     constructor(props){
@@ -16,7 +17,7 @@ class TenantDashboard extends React.Component{
           issueDescription: '',
           Title: '',
           Description: '',
-          priority:''
+          priority:'Normal'
         }
     }
 
@@ -83,7 +84,7 @@ class TenantDashboard extends React.Component{
       } else {
         editDescription = "";
         editTitle = "";
-        editPriority= "";
+        editPriority= this.state.priority;
       }
      //change modal state to open it.
         this.setState({
@@ -116,10 +117,13 @@ render(){
     </Card.Header>
     <Accordion.Collapse eventKey="0">
       <Card.Body>
+        
         <p>Description: {issue.description}</p> 
         
-        <p>Priority:
-        {issue.priority}</p>
+        <p>Priority: {issue.priority}</p>
+        
+        { (issue.userId === this.props.activeUser.id) ? ( 
+          <div>
         <Button
         style={{float:"right", cursor:"pointer"}}
         onClick={() => this.openModal(index)}>
@@ -131,6 +135,8 @@ render(){
         onClick={() => {   this.removeIssue(index); }}>
           Remove
         </Button>
+        </div>
+           ) :  undefined}
       </Card.Body>
     </Accordion.Collapse>
          </Card>
@@ -143,10 +149,8 @@ render(){
         <div>
          <h1> {activeUser} </h1>
          <h2>Reported Issues</h2>
-           <Accordion defaultActiveKey="0">
-          {allIssuesJSX}
-        </Accordion>
-               
+      
+                 <IssuesList allIssues={allIssuesJSX}></IssuesList>
         <Modal show={this.state.isModalOpen} onHide={this.handleClose}>
             <Modal.Header closeButton>
             <Modal.Title>{this.state.editId > -1 ? `Edit Issue #${this.state.editId +1 }` : "Add Issue"}</Modal.Title>
@@ -179,17 +183,16 @@ render(){
                     Priority:
                 </Form.Label>
                 <Col sm={10}>
-                    
-                    <Form.Control 
-                    type="text"
-                    placeholder="issue priority"  
-                    value={this.state.priority}
-                    onChange={(event)=> {this.setState({priority: event.target.value})}}
-                    />
+                <Form.Control value={this.state.priority} as="select" custom   onChange={(event)=> {this.setState({priority: event.target.value})}}>
+                    <option value="Normal">Normal</option>
+                    <option value="Important">Important</option>
+                    <option value="Urgent">Urgent</option>
+                 </Form.Control>
                 </Col>
-      
+             
+
             </Form.Group>
- 
+                                                
             <Button variant="secondary" onClick={this.handleClose}>
                 Close
             </Button>

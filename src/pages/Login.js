@@ -20,7 +20,7 @@ updatePass = (event) => {
         password: event.target.value
     })
 }
-updateEmail = (event) =>{
+updateEmail = (event) => {
     this.setState({
         email: event.target.value
     })
@@ -41,7 +41,7 @@ handleLogin = () => {
 }
 render(){
     return(
-        <div className="p-login">
+        <div className="p-login" >
         <h1 style={{margin: "50px 0 70px 0"}}>Login</h1>
        <div >
         <Form className="mt-5" style={{marginRight: "500px"}}>

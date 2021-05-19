@@ -65,10 +65,10 @@ render(){
 
 
 
-            <Row >  
+            <Row style={{backgroundColor: "skyblue"}}>  
             <Col md={4} sm={12} lg={6}>
                 <Form >
-            <Form.Group controlId="formBasicEmail" style={{marginBottom: "10px"}}>
+            <Form.Group controlId="formBasicEmail" style={{marginBottom: "10px"}} >
                 <Form.Label style={{fontSize: "12px"}}>Name:</Form.Label>
                 <Form.Control value={this.state.name} type="text" placeholder="Enter Name" onChange={(event) => {this.signUpInput('name',event.target.value)}}/>
 
@@ -98,7 +98,7 @@ render(){
             </Form>
             </Col>
             <Col md={4} sm={12} lg={6}>
-            <Image style={{width: "450px", borderRadius: "50px" }} src="https://i.pinimg.com/originals/84/ba/9e/84ba9e7f25805711179b64d2d623d1e0.jpg"  />
+            <Image style={{width: "450px", borderRadius: "50px", marginLeft: "90px", marginTop: "20px"}} src="https://i.pinimg.com/originals/84/ba/9e/84ba9e7f25805711179b64d2d623d1e0.jpg"  />
             {/* {allUsers} */}
             </Col>
             </Row>

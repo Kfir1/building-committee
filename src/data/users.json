@@ -17,5 +17,14 @@
         "password": "abc",
         "address": "rgrg",
         "city": "rgrgr"
+    },
+    {
+        "isCommitteeMember": false,
+        "id":3,
+        "name": "steve jobs",
+        "email": "jobs@gmail.com",
+        "password": "abc",
+        "address": "rgrg",
+        "city": "rgrgr"
     }
 ]
