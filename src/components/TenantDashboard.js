@@ -165,11 +165,11 @@ render(){
             <Modal.Title>{this.state.editId > -1 ? `Edit Issue #${this.state.editId +1 }` : "Add Issue"}</Modal.Title>
             </Modal.Header>
             <Modal.Body>
-            <Form.Group as={Row} >
+            {/* <Form.Group as={Row} > */}
                 <Form.Label column sm={2}>
                 Issue:
                 </Form.Label>
-                <Col sm={10} style={{paddingLeft: "24px"}}>
+                <Col sm={10} >
                     <Form.Control 
                     required={true}
                     type="text" 
@@ -183,7 +183,7 @@ render(){
                 <Form.Label column sm={2}>
                 Description:
                 </Form.Label>
-                <Col sm={10} style={{paddingLeft: "24px"}}>
+                <Col sm={10}>
                   <Form.Control  
                    required={true} 
                     type="text" 
@@ -196,7 +196,7 @@ render(){
                     Priority:
                 </Form.Label>
                 <Col sm={10}>
-                <Form.Control required={true} value={this.state.priority} as="select" custom  onChange={(event)=> {this.setState({priority: event.target.value})}}>
+                <Form.Control required={true}  value={this.state.priority} as="select" custom   onChange={(event)=> {this.setState({priority: event.target.value})}}>
                     <option value="Normal">Normal</option>
                     <option value="Important">Important</option>
                     <option value="Urgent">Urgent</option>
@@ -215,7 +215,7 @@ render(){
        
              
             
-            </Form.Group>
+            {/* </Form.Group> */}
                                                 
             <Button variant="secondary" onClick={this.handleClose}>
                 Close

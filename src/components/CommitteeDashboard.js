@@ -192,11 +192,11 @@ render(){
             <Modal.Title>{this.state.editId > -1 ? `Edit Issue #${this.state.editId +1 }` : "Add Issue"}</Modal.Title>
             </Modal.Header>
             <Modal.Body>
-            <Form.Group as={Row} >
+            {/* <Form.Group as={Row} > */}
                 <Form.Label column sm={2}>
                 Issue:
                 </Form.Label>
-                <Col sm={10} style={{paddingLeft: "24px"}}>
+                <Col sm={10} >
                     <Form.Control 
                     required={true}
                     type="text" 
@@ -210,7 +210,7 @@ render(){
                 <Form.Label column sm={2}>
                 Description:
                 </Form.Label>
-                <Col sm={10} style={{paddingLeft: "24px"}}>
+                <Col sm={10} >
                   <Form.Control  
                    required={true} 
                     type="text" 
@@ -242,7 +242,7 @@ render(){
        
              
             
-            </Form.Group>
+            {/* </Form.Group> */}
                                                 
             <Button variant="secondary" onClick={this.handleClose}>
                 Close
@@ -257,11 +257,11 @@ render(){
             <Modal.Title>Add Comment</Modal.Title>
             </Modal.Header>
             <Modal.Body>
-            <Form.Group as={Row} >
+            {/* <Form.Group as={Row} > */}
                 <Form.Label column sm={2}>
                 Comment:
                 </Form.Label>
-                <Col sm={10} style={{paddingLeft: "24px"}}>
+                <Col sm={10} >
                     <Form.Control 
                     required={true}
                     type="text" 
@@ -269,9 +269,8 @@ render(){
                      value={this.state.committeeMemberComment}
                      onChange={(event)=> {this.setState({committeeMemberComment: event.target.value})}}
                       />
-                
                 </Col>
-            </Form.Group>
+            {/* </Form.Group> */}
                                                 
             <Button variant="secondary" onClick={this.handleCloseComment}>
                 Close
