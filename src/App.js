@@ -88,6 +88,17 @@ class App extends React.Component{
           });  
         }
       }
+
+      // addCommitteeMemberComment = (comment, indexOfComment) =>{
+      //     if (typeof indexOfComment === "undefined") {
+      //           index = -1;
+      //     }
+      //     if(index > -1)
+      //     this.setState({
+      //         allIssues: this.state.a
+      //     })
+      // } 
+
       removeIssue = (index) =>  {
         this.setState({
           // index from  removeIssue in  tenantDashbord.js .  will filter the issue we want to remove by index received. filter( (v, i)  -v- is for first parameter and i for index. have to write first param for second param to be the index of filter array

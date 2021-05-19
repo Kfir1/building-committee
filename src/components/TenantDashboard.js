@@ -10,14 +10,16 @@ class TenantDashboard extends React.Component{
         super(props)
         this.state = {
           show: false,
-          // newTenantIssue: issueInfo
           isModalOpen: false,
           editId: -1,
           issueTitle: '',
           issueDescription: '',
           Title: '',
           Description: '',
-          priority:'Normal'
+          // default priority set to normal
+          priority:'Normal',
+          image: null,
+       
         }
     }
 
@@ -34,30 +36,27 @@ class TenantDashboard extends React.Component{
         issueTitle: this.state.Title,
         description: this.state.Description,
         priority: this.state.priority,
+        image: this.state.image,
         userId: this.props.activeUser.id,
       }
+  
       const editId = this.state.editId;
       this.setState({
         isModalOpen: false,
         Title: "",
         Description: "",
-        priority: "",
+        priority: "Normal",
+        image: "",
+       
         // editId: -1,
       });
 
-      // passing editId to App.js
+      //if: check if  newIssue.issueTitle  newIssue.description   newIssue.priority  exists
+      if( newIssue.issueTitle &&  newIssue.description && newIssue.priority){ 
+        // passing editId to App.js
       this.props.addIssue(newIssue, editId);
-      
-      // this.setState({
-      //   isModalOpen: true,
-      // })
-      // if(this.state.editId > 0 ) 
-      // {
-      //   this.props.addIssue(newIssue, this.state.editId);
-      // } else {
-      //   this.props.addIssue(newIssue);
-      // }
-      // this.setState({isModalOpen: false});
+      }
+
     }
     
     // pass id from remove issue to 
@@ -75,16 +74,22 @@ class TenantDashboard extends React.Component{
       let editDescription = "";
       let editTitle = "";
       let editPriority = "";
+      let editImage = "";
+      let editCommitteeMemberComment = "";
       //check id received from map array. get issues by their id and 
       if (id > -1) {
         editDescription = this.props.allIssues[id].description;
         editTitle = this.props.allIssues[id].issueTitle;
         editPriority = this.props.allIssues[id].priority;
+        editImage = this.props.allIssues[id].image;
+        editCommitteeMemberComment = this.props.allIssues[id].editCommitteeMemberComment;
       // else leave vars empty
       } else {
         editDescription = "";
         editTitle = "";
         editPriority= this.state.priority;
+        editImage = "";
+        editCommitteeMemberComment = "";
       }
      //change modal state to open it.
         this.setState({
@@ -96,8 +101,10 @@ class TenantDashboard extends React.Component{
          editId: id,
          Title: editTitle,
          Description: editDescription,
-         priority: editPriority
-         
+         priority: editPriority,
+         image: editImage,
+         comment: editCommitteeMemberComment
+       
       });
     
     }
@@ -122,6 +129,8 @@ render(){
         
         <p>Priority: {issue.priority}</p>
         
+        <img src={issue.image}/>
+        
         { (issue.userId === this.props.activeUser.id) ? ( 
           <div>
         <Button
@@ -136,7 +145,7 @@ render(){
           Remove
         </Button>
         </div>
-           ) :  undefined}
+           ) :  undefined }
       </Card.Body>
     </Accordion.Collapse>
          </Card>
@@ -144,7 +153,7 @@ render(){
         )
     } )
 
-  
+
     return (
         <div>
          <h1> {activeUser} </h1>
@@ -162,6 +171,7 @@ render(){
                 </Form.Label>
                 <Col sm={10} style={{paddingLeft: "24px"}}>
                     <Form.Control 
+                    required={true}
                     type="text" 
                     placeholder= "Issue Title"
                      value={this.state.Title}
@@ -174,7 +184,10 @@ render(){
                 Description:
                 </Form.Label>
                 <Col sm={10} style={{paddingLeft: "24px"}}>
-                  <Form.Control type="text" placeholder="description"
+                  <Form.Control  
+                   required={true} 
+                    type="text" 
+                    placeholder="description"
                     value={this.state.Description}
                     onChange={(event)=> {this.setState({Description: event.target.value})}}
                   />
@@ -183,14 +196,25 @@ render(){
                     Priority:
                 </Form.Label>
                 <Col sm={10}>
-                <Form.Control value={this.state.priority} as="select" custom   onChange={(event)=> {this.setState({priority: event.target.value})}}>
+                <Form.Control required={true} value={this.state.priority} as="select" custom  onChange={(event)=> {this.setState({priority: event.target.value})}}>
                     <option value="Normal">Normal</option>
                     <option value="Important">Important</option>
                     <option value="Urgent">Urgent</option>
                  </Form.Control>
                 </Col>
+                <Col sm={10}>
+                <Form.Label column sm={2}>
+                    Image:
+                </Form.Label>
+                <Form.Control  
+                 value={this.state.image}
+                 type="text"
+                 onChange={(event)=> {this.setState({image: event.target.value})}}>
+                 </Form.Control>
+                </Col>
+       
              
-
+            
             </Form.Group>
                                                 
             <Button variant="secondary" onClick={this.handleClose}>

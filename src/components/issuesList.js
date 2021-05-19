@@ -1,6 +1,8 @@
 import React from 'react';
 import { Accordion } from 'react-bootstrap';
 
+
+// this component is for viewing all issues
 class IssuesList extends React.Component{
     constructor(props){
     super(props)
