@@ -169,6 +169,7 @@ class App extends React.Component{
                           addIssue={this.addIssue}
                           removeIssue={this.removeIssue}
                           allMessages={this.state.allMessages} 
+                          addMessage={this.addMessage}
                           >
                           </Dashboard>
                         </Route>

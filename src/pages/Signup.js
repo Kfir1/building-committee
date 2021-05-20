@@ -97,8 +97,8 @@ render(){
             </Button>
             </Form>
             </Col>
-            <Col md={4} sm={12} lg={6}>
-            <Image style={{width: "450px", borderRadius: "50px", marginLeft: "90px", marginTop: "20px"}} src="https://i.pinimg.com/originals/84/ba/9e/84ba9e7f25805711179b64d2d623d1e0.jpg"  />
+            <Col md={6} sm={12} lg={6}>
+            <Image style={{width: "100%", borderRadius: "50px", paddingLeft: "10px", marginTop: "20px"}} src="https://i.pinimg.com/originals/84/ba/9e/84ba9e7f25805711179b64d2d623d1e0.jpg"  />
             {/* {allUsers} */}
             </Col>
             </Row>

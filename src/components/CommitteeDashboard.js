@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Accordion, Card, Button, Modal, Row, Col, Form } from 'react-bootstrap';
-import IssuesList from './issuesList';
+import IssuesList from './IssuesList';
 
 
 

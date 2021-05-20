@@ -3,23 +3,19 @@ import { Accordion } from 'react-bootstrap';
 
 
 // this component is for viewing all messages list
-class Allmessages extends React.Component{
+class MessagesList extends React.Component{
     constructor(props){
     super(props)
 
     
 } 
 
-
-
-
-
 render(){
 
     return(
         <div>
         <Accordion defaultActiveKey="0">
-             {this.props.allmessages} 
+             {this.props.allMessages} 
         </Accordion>
     </div>
     )
@@ -28,4 +24,4 @@ render(){
 
 }
 
-export default Allmessages
+export default MessagesList

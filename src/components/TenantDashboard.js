@@ -3,7 +3,8 @@ import React from 'react';
 import { Accordion, Card, Button, Modal, Row, Col, Form } from 'react-bootstrap';
 
 import 'bootstrap/dist/css/bootstrap.css';
-import IssuesList from './issuesList';
+import IssuesList from './IssuesList';
+import MessagesList from './MessagesList'
 
 class TenantDashboard extends React.Component{
     constructor(props){
@@ -21,6 +22,7 @@ class TenantDashboard extends React.Component{
           image: null,
           
 
+          isModalOpenMessages: false,
           messageEditId: -1,
           messageTitle: "",
           messageDetails: "",
@@ -35,14 +37,19 @@ class TenantDashboard extends React.Component{
           isModalOpen: false,
       })
     }
+    handleCloseMessages = () =>{
+      this.setState({
+        isModalOpenMessages: false,
+      })
+    }
 
-    
+   
     saveModalInfoMessage = () => {
       let newMessage = {
-        messageTitle: this.state.messageTitle,
-        messageDetails: this.state.messageDetails,
-        messagePriority: this.state.messagePriority,
-        messageImage: this.state.messageImage,
+        title: this.state.messageTitle,
+        details: this.state.messageDetails,
+        priority: this.state.messagePriority,
+        image: this.state.messageImage,
         userId: this.props.activeUser.id,
       }
       // console.log(newMessage);
@@ -56,8 +63,9 @@ class TenantDashboard extends React.Component{
       });
       
       // same for messages 
-      if( newMessage.messageTitle &&  newMessage.messageDetails && newMessage.messagePriority){ 
+      if( newMessage.title &&  newMessage.details && newMessage.priority){ 
         // passing editId to App.js
+        console.log(newMessage);
       this.props.addMessage(newMessage, messageEditId);
       }
     } 
@@ -100,6 +108,7 @@ class TenantDashboard extends React.Component{
     removeIssue = (id) => {
       this.props.removeIssue(id);
     }
+
 
     // when open modal clicking add issue id will be -1
     openModal = (id) => {
@@ -145,6 +154,53 @@ class TenantDashboard extends React.Component{
       });
     
     }
+
+     
+
+    // when open modal clicking add issue id will be -1
+    openModalMessage = (id) => {
+      // if id (index from map) will not receive value (clicking add issue  onClick={this.openModal}) it will be equal to -1
+      if ( typeof id === "undefined" ){
+        id = -1;
+      }
+
+        // create empty strings variable
+        let editMessageDetails = "";
+        let editMessageTitle = "";
+        let editMessagePriority = "";
+        let editMessageImage = "";
+       
+        //check id received from map array. get issues by their id and 
+        if (id > -1) {
+          editMessageDetails = this.props.allMessages[id].details;
+          editMessageTitle = this.props.allMessages[id].title;
+          editMessagePriority = this.props.allMessages[id].priority;
+          editMessageImage = this.props.allMessages[id].image;
+  
+        // else leave vars empty
+        } else {
+          editMessageDetails = "";
+          editMessageTitle = "";
+          editMessagePriority= this.state.messagePriority;
+          editMessageImage = "";
+     
+        }
+       //change modal state to open it.
+          this.setState({
+            isModalOpenMessages: true,
+          })
+    // update state and edit existing issues
+
+        this.setState({
+          messageEditId: id,
+          messageTitle: editMessageTitle,
+          messageDetails: editMessageDetails,
+          messagePriority: editMessagePriority,
+          messageImage: editMessageImage,
+         
+        });
+    }
+
     
 render(){
   // get the name of activeUser to show as h1
@@ -189,8 +245,46 @@ render(){
          
         )
     } )
-
-
+console.log(this.props.allMessages);
+    const allMessagesJSX = this.props.allMessages.map((message,index) => {
+      return (
+        // id from  issues json object
+          <Card key={message.id}>
+  <Card.Header>
+    <Accordion.Toggle as={Button} variant="link" eventKey="0">
+      {   message.title  }   
+    </Accordion.Toggle>
+  </Card.Header>
+  <Accordion.Collapse eventKey="0">
+    <Card.Body>
+      
+      <p>Details: {message.details}</p> 
+      
+      <p>Priority: {message.priority}</p>
+      
+      <img src={message.image}/>
+      
+      { (message.userId === this.props.activeUser.id) ? ( 
+        <div>
+      <Button
+      style={{float:"right", cursor:"pointer"}}
+      onClick={() => this.openModalMessage(index)}>
+        Edit
+      </Button>
+      <Button
+      variant="danger"
+      style={{float:"right", cursor:"pointer"}}
+      onClick={() => {   this.removeMessage(index); }}>
+        Remove
+      </Button>
+      </div>
+         ) :  undefined }
+    </Card.Body>
+  </Accordion.Collapse>
+       </Card>
+       
+      )
+  } )
 
     
 
@@ -267,6 +361,82 @@ render(){
         </Modal>
             <Button style={{marginTop: "22px", marginBottom: "22px"}} variant="secondary" onClick={this.openModal} >
                 Add Issue
+            </Button>
+     
+
+
+
+
+
+
+                      <h1> {activeUser} </h1>
+                       <h2>Messages</h2>
+      
+                 <MessagesList allMessages={allMessagesJSX}></MessagesList>
+        <Modal show={this.state.isModalOpenMessages} onHide={this.handleCloseMessages}>
+            <Modal.Header closeButton>
+            <Modal.Title>{this.state.messageEditId > -1 ? `Edit Message #${this.state.messageEditId +1 }` : "Add Message"}</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+            {/* <Form.Group as={Row} > */}
+                <Form.Label column sm={2}>
+                Issue:
+                </Form.Label>
+                <Col sm={10} >
+                    <Form.Control 
+                    required={true}
+                    type="text" 
+                    placeholder= "Message Title"
+                     value={this.state.messageTitle}
+                     onChange={(event)=> {this.setState({messageTitle: event.target.value})}}
+                      />
+                </Col>
+                <Form.Label column sm={2}>
+                  Details:
+                </Form.Label>
+                <Col sm={10}>
+                  <Form.Control  
+                   required={true} 
+                    type="text" 
+                    placeholder="Details"
+                    value={this.state.messageDetails}
+                    onChange={(event)=> {this.setState({messageDetails: event.target.value})}}
+                  />
+                </Col>
+                <Form.Label column sm={2}>
+                    Priority:
+                </Form.Label>
+                <Col sm={10}>
+                <Form.Control required={true}  value={this.state.messagePriority} as="select" custom   onChange={(event)=> {this.setState({messagePriority: event.target.value})}}>
+                    <option value="Info">Info</option>
+                    <option value="Important">Important</option>
+                 </Form.Control>
+                </Col>
+                <Col sm={10}>
+                <Form.Label column sm={2}>
+                    Image:
+                </Form.Label>
+                <Form.Control  
+                 value={this.state.messageImage}
+                 type="text"
+                 onChange={(event)=> {this.setState({messageImage: event.target.value})}}>
+                 </Form.Control>
+                </Col>
+       
+             
+            
+            {/* </Form.Group> */}
+                                                
+            <Button variant="secondary" onClick={this.handleCloseMessages}>
+                Close
+            </Button>
+            <Button style={{margin: "14px"}} variant="primary" onClick={() =>  {  this.saveModalInfoMessage() }}>
+                Save Changes
+            </Button>
+            </Modal.Body>
+        </Modal>
+            <Button style={{marginTop: "22px", marginBottom: "22px"}} variant="secondary" onClick={this.openModalMessage} >
+                Add Message
             </Button>
      
         </div>

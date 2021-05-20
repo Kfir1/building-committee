@@ -5,8 +5,8 @@
         "name": "John doe",
         "email": "skarlinski@gmail.com",
         "password": "123",
-        "address": "rgrg",
-        "city": "rgrg"
+        "address": "kalaniot 2",
+        "city": "beer sheva"
         
     },
     {
@@ -15,8 +15,8 @@
         "name": "sara doe",
         "email": "sara@gmail.com",
         "password": "abc",
-        "address": "rgrg",
-        "city": "rgrgr"
+        "address": "even gvirol 23",
+        "city": "tel aviv"
     },
     {
         "isCommitteeMember": false,
@@ -24,7 +24,7 @@
         "name": "steve jobs",
         "email": "jobs@gmail.com",
         "password": "abc",
-        "address": "rgrg",
-        "city": "rgrgr"
+        "address": "ha shalom 1",
+        "city": "ramat gan"
     }
 ]
