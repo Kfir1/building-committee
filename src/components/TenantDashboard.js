@@ -19,7 +19,14 @@ class TenantDashboard extends React.Component{
           // default priority set to normal
           priority:'Normal',
           image: null,
-       
+          
+
+          messageEditId: -1,
+          messageTitle: "",
+          messageDetails: "",
+            // default priority set to Info
+          messagePriority: "Info",
+          messageImage: null,
         }
     }
 
@@ -30,6 +37,35 @@ class TenantDashboard extends React.Component{
     }
 
     
+    saveModalInfoMessage = () => {
+      let newMessage = {
+        messageTitle: this.state.messageTitle,
+        messageDetails: this.state.messageDetails,
+        messagePriority: this.state.messagePriority,
+        messageImage: this.state.messageImage,
+        userId: this.props.activeUser.id,
+      }
+      // console.log(newMessage);
+      const messageEditId = this.state.messageEditId;
+      this.setState({
+          isModalOpen: false,
+          messageTitle: "",
+          messageDetails: "",
+          messagePriority: "Info",
+          messageImage: "",  
+      });
+      
+      // same for messages 
+      if( newMessage.messageTitle &&  newMessage.messageDetails && newMessage.messagePriority){ 
+        // passing editId to App.js
+      this.props.addMessage(newMessage, messageEditId);
+      }
+    } 
+    // pass id from remove issue to 
+    removeMessage = (id) => {
+      this.props.removeMessage(id);
+    }
+
     saveModalInfo = () =>{
       
       let newIssue = {
@@ -39,6 +75,7 @@ class TenantDashboard extends React.Component{
         image: this.state.image,
         userId: this.props.activeUser.id,
       }
+
   
       const editId = this.state.editId;
       this.setState({
@@ -48,8 +85,8 @@ class TenantDashboard extends React.Component{
         priority: "Normal",
         image: "",
        
-        // editId: -1,
       });
+
 
       //if: check if  newIssue.issueTitle  newIssue.description   newIssue.priority  exists
       if( newIssue.issueTitle &&  newIssue.description && newIssue.priority){ 
@@ -153,6 +190,9 @@ render(){
         )
     } )
 
+
+
+    
 
     return (
         <div>

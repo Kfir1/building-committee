@@ -2,8 +2,8 @@
     {
         "userId": 1,
         "id": 1,
-        "issueTitle": "Issue number 1",
-        "description": "some desc1",
+        "title": "message number 1",
+        "details": "some desc1",
         "priority": "Urgent",
         "priorityCode": 3,
         "image": "https://24-7plumber.co.il/wp-content/uploads/2017/01/%D7%A4%D7%99%D7%A6%D7%95%D7%A5-%D7%A6%D7%99%D7%A0%D7%95%D7%A8-%D7%9E%D7%99%D7%9D-300x200.jpg"
@@ -12,24 +12,20 @@
     {
         "userId": 2,
         "id": 2,
-        "issueTitle": "Issue number 2",
-        "description": "some desc2",
+        "title": "message number 2",
+        "details": "some desc2",
         "priority": "Normal",
         "priorityCode": 1,
         "image": "https://www.ynet.co.il/PicServer5/2017/11/06/8135570/s1.jpg"
-     
-
+        
     },
     {
         "userId": 2,
         "id": 3,
-        "issueTitle": "Issue number 3",
-        "description": "some desc3",
+        "title": "message number 3",
+        "details": "some desc3",
         "priority": "Important",
         "priorityCode": 2,
         "image": "https://foruhome.com/wp-content/uploads/2018/03/plumber-leaking-pipes.jpg"
- 
-   
     }
-
 ]

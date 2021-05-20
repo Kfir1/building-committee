@@ -11,7 +11,7 @@ import { Container } from 'react-bootstrap';
 import Dashboard from './pages/Dashboard';
 import jsonData from './data/users.json';
 import issuesData from './data/issues.json';
-
+import messagesData from './data/messages.json';
 
 class App extends React.Component{
       constructor(props) {
@@ -20,6 +20,7 @@ class App extends React.Component{
           allUsers: jsonData,
           activeUser: null, 
           allIssues: issuesData,
+          allMessages: messagesData,
         }
       }
 
@@ -88,7 +89,40 @@ class App extends React.Component{
           });  
         }
       }
+      removeIssue = (index) =>  {
+        this.setState({
+          // index from  removeIssue in  tenantDashbord.js .  will filter the issue we want to remove by index received. filter( (v, i)  -v- is for first parameter and i for index. have to write first param for second param to be the index of filter array
+          allIssues: this.state.allIssues.filter( (v, i) => { return i !== index; })
+        });
+      }
 
+      addMessage = (newMessage, index) => {
+        if ( typeof index === "undefined" ){
+          index = -1;
+        }
+        if(index > -1) {
+          this.setState({
+            allMessages: this.state.allMessages.map((message, rowIndex) => {
+              if (rowIndex === index) {
+                return newMessage;
+              } 
+              else {
+                return message;
+              } 
+            })
+          });
+        } else {
+          this.setState({
+            allMessages: this.state.allMessages.concat(newMessage)
+          });  
+        }
+      }
+      removeMessage = (index) => {
+        this.setState({
+          // index from  removeIssue in  tenantDashbord.js .  will filter the issue we want to remove by index received. filter( (v, i)  -v- is for first parameter and i for index. have to write first param for second param to be the index of filter array
+          allMessages: this.state.allMessages.filter( (v, i) => { return i !== index; })
+        });
+      }
       // addCommitteeMemberComment = (comment, indexOfComment) =>{
       //     if (typeof indexOfComment === "undefined") {
       //           index = -1;
@@ -99,12 +133,7 @@ class App extends React.Component{
       //     })
       // } 
 
-      removeIssue = (index) =>  {
-        this.setState({
-          // index from  removeIssue in  tenantDashbord.js .  will filter the issue we want to remove by index received. filter( (v, i)  -v- is for first parameter and i for index. have to write first param for second param to be the index of filter array
-          allIssues: this.state.allIssues.filter( (v, i) => { return i !== index; })
-        });
-      }
+
       render(){
             return (
               <HashRouter>
@@ -132,12 +161,14 @@ class App extends React.Component{
                           </MessagePage>
                         </Route> */}
                            <Route exact path="/dashboard">
+
                           <Dashboard 
                           activeUser={this.state.activeUser}
                           allIssues={this.state.allIssues}
                           // addIssue={(issue) => { this.addIssue(issue); }}
                           addIssue={this.addIssue}
                           removeIssue={this.removeIssue}
+                          allMessages={this.state.allMessages} 
                           >
                           </Dashboard>
                         </Route>
