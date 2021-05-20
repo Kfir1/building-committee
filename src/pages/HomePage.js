@@ -12,7 +12,7 @@ class HomePage extends React.Component{
         return(
             <div>
                
-                <Image  style={{ height: "150px", width: "1000px", display: "flex", justifyContent: "center", textAlign:"center"}} src="https://i.pinimg.com/originals/84/ba/9e/84ba9e7f25805711179b64d2d623d1e0.jpg" fluid />
+                <Image  style={{ height: "150px", width: "50s0px", display: "flex", justifyContent: "center", textAlign:"center"}} src="https://i.pinimg.com/originals/84/ba/9e/84ba9e7f25805711179b64d2d623d1e0.jpg" fluid />
                 <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididun</div>
                   {/* <Image  style={{width: "950px", height: "200px" , borderRadius: "50px" }} src="https://i.pinimg.com/originals/84/ba/9e/84ba9e7f25805711179b64d2d623d1e0.jpg"  /> */}
                      <Container>
