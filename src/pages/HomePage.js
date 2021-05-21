@@ -1,6 +1,6 @@
 import React from 'react'
 import { Col, Container, Image, Row } from 'react-bootstrap'
-
+import './HomePage.css';
 
 class HomePage extends React.Component{
     constructor(props){
@@ -10,9 +10,9 @@ class HomePage extends React.Component{
 
     render(){
         return(
-            <div>
+            <div className="background-homepage">
                
-                <Image  style={{ opacity: 0.5, width: "100%", display: "flex", justifyContent: "center", textAlign:"center"}} src="https://dm0qx8t0i9gc9.cloudfront.net/thumbnails/video/ByZVUTp1Gja5fwdxr/videoblocks-aerial-drone-shot-over-residential-apartment-buildings-on-sunset-aerial-shot-over-community-apartment-complex-in-china_rlgzwdlbk4_thumbnail-1080_01.png" fluid />
+                <Image className="background-img" fluid />
                 {/* <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididun</div> */}
                   {/* <Image  style={{width: "950px", height: "200px" , borderRadius: "50px" }} src="https://i.pinimg.com/originals/84/ba/9e/84ba9e7f25805711179b64d2d623d1e0.jpg"  /> */}
                      {/* <Container>

@@ -289,7 +289,7 @@ console.log(this.props.allMessages);
     
 
     return (
-        <div>
+        <div className="tenant"> 
          <h1> {activeUser} </h1>
          <h2>Issues</h2>
       

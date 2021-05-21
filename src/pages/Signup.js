@@ -1,8 +1,7 @@
 
 import React from 'react';
 import { Button, Col, Container, Form, Image, Row } from 'react-bootstrap';
-
-
+import './Signup.css';
 
 class Signup extends React.Component{
     constructor(props){
@@ -16,6 +15,7 @@ class Signup extends React.Component{
     }
 } 
 
+//get the inputs. the parameters from inputs are (string, event.target.value)
 signUpInput = (nameOfInput,value) => {
 
     this.setState({
@@ -25,6 +25,7 @@ signUpInput = (nameOfInput,value) => {
 }
 
 userInfo = () => {
+    //create new object to of user 
     const memberObj = {
         name: this.state.name,
         email: this.state.email,
@@ -32,9 +33,17 @@ userInfo = () => {
         address: this.state.address,
         city: this.state.city,
     }
-    this.props.addUser(memberObj)
+    
+    // check if inputs in obj not empty. if not add user in App
+    if(memberObj.name !== "" && memberObj.email !== "" && memberObj.password !== "" && memberObj.address !== "" && memberObj.city !== ""  ){
+        this.props.addUser(memberObj)
+    }
+    // add the obj to list in app
+    else{
+        alert("All Fields Required");
+    }
 
-    //empty inputs 
+    //empty inputs after sign up press
     this.setState({
         name: '',
         email: '',
@@ -48,6 +57,7 @@ userInfo = () => {
 
 
 render(){
+    //get the list of registered users
 //    const allUsers = this.props.allUsers.map((user)=>{
 //        return <tr>
 //            <td>{user.name}</td>
@@ -59,15 +69,11 @@ render(){
 //    });
 
     return(
-        <div>
-            
-            {/* <Container> */}
-
-
-            
-            <Row style={{backgroundColor: "skyblue"}}>  
-            <Col md={4} sm={12} lg={6}>
-                <Form style={{paddingTop: "40px"}}>
+        <div className="background">
+            {/* <Container   md={4} sm={12} lg={6}> */}
+            {/* <Row >   */}
+            {/* <Col md={4} sm={12} lg={6}> */}
+                <Form className="form" style={{backgroundColor: "skyblue"}} style={{paddingTop: "40px"}}>
                 <h1 style={{margin: "0px 0 20px 0"}}>Sign Up</h1>
             <Form.Group controlId="formBasicEmail" style={{marginBottom: "10px"}} >
                 <Form.Label style={{fontSize: "15px"}}>Name:</Form.Label>
@@ -93,17 +99,18 @@ render(){
             </Form.Group>
             <Form.Group controlId="formBasicCheckbox" style={{marginBottom: "10px"}}>
             </Form.Group>
-            <Button  style={{margin: "20px 0 20px 0"}} variant="primary" type="button" onClick={this.userInfo}>
+            <Button className="btn" style={{margin: "20px 0 20px 0"}} variant="primary" type="button" onClick={this.userInfo}>
                 Sign Up
             </Button>
             </Form>
-            </Col>
-            <Col md={6} sm={12} lg={6}>
-            <Image  style={{ width: "100%", borderRadius: "50px", paddingLeft: "10px", margin: "20px auto 20px auto"}} src="https://i.pinimg.com/originals/84/ba/9e/84ba9e7f25805711179b64d2d623d1e0.jpg"  />
-            {/* {allUsers} */}
-            </Col>
-            </Row>
+            {/* </Col> */}
+            {/* <Col md={6} sm={12} lg={6}> */}
+            {/* <Image  style={{ width: "100%", borderRadius: "50px", paddingLeft: "10px", margin: "20px auto 20px auto"}} src="https://i.pinimg.com/originals/84/ba/9e/84ba9e7f25805711179b64d2d623d1e0.jpg"  /> */}
+           
+            {/* </Col> */}
+            {/* </Row> */}
             {/* </Container> */}
+            {/* <div> { {allUsers} }</div> */}
     </div>
     )
 }
