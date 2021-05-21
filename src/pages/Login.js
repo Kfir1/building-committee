@@ -74,8 +74,6 @@ render(){
         </Form>
         </Container>
         {/* <Link style={{marginBottom: "11px"}} to="/signup">Sign up</Link> */}
-    
-
     </div>
     )
 }

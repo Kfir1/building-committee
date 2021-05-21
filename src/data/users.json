@@ -5,8 +5,8 @@
         "name": "John doe",
         "email": "skarlinski@gmail.com",
         "password": "123",
-        "address": "kalaniot 2",
-        "city": "beer sheva",
+        "address": "even gvirol 23",
+        "city": "tel aviv",
         "apartment": "8"
     },
     {
@@ -25,8 +25,8 @@
         "name": "steve jobs",
         "email": "jobs@gmail.com",
         "password": "abc",
-        "address": "ha shalom 1",
-        "city": "ramat gan",
+        "address": "even gvirol 23",
+        "city": "tel aviv",
         "apartment": "4"
     }
 ]

@@ -211,11 +211,11 @@ render(){
           // id from  issues json object
             <Card key={issue.id}>
     <Card.Header>
-      <Accordion.Toggle as={Button} variant="link" eventKey="0">
+      <Accordion.Toggle as={Button} variant="link" eventKey="1">
         {   issue.issueTitle  }   
       </Accordion.Toggle>
     </Card.Header>
-    <Accordion.Collapse eventKey="0">
+    <Accordion.Collapse eventKey="1">
       <Card.Body>
         
         <p>Description: {issue.description}</p> 
@@ -251,11 +251,11 @@ console.log(this.props.allMessages);
         // id from  issues json object
           <Card key={message.id}>
   <Card.Header>
-    <Accordion.Toggle as={Button} variant="link" eventKey="0">
+    <Accordion.Toggle as={Button} variant="link" eventKey="1">
       {   message.title  }   
     </Accordion.Toggle>
   </Card.Header>
-  <Accordion.Collapse eventKey="0">
+  <Accordion.Collapse eventKey="1">
     <Card.Body>
       
       <p>Details: {message.details}</p> 
@@ -294,6 +294,7 @@ console.log(this.props.allMessages);
          <h2>Issues</h2>
       
                  <IssuesList allIssues={allIssuesJSX}></IssuesList>
+
         <Modal show={this.state.isModalOpen} onHide={this.handleClose}>
             <Modal.Header closeButton>
             <Modal.Title>{this.state.editId > -1 ? `Edit Issue #${this.state.editId +1 }` : "Add Issue"}</Modal.Title>
@@ -373,6 +374,7 @@ console.log(this.props.allMessages);
                        <h2>Messages</h2>
       
                  <MessagesList allMessages={allMessagesJSX}></MessagesList>
+
         <Modal show={this.state.isModalOpenMessages} onHide={this.handleCloseMessages}>
             <Modal.Header closeButton>
             <Modal.Title>{this.state.messageEditId > -1 ? `Edit Message #${this.state.messageEditId +1 }` : "Add Message"}</Modal.Title>
