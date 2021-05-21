@@ -99,7 +99,7 @@ render(){
             </Form.Group>
             <Form.Group controlId="formBasicCheckbox" style={{marginBottom: "10px"}}>
             </Form.Group>
-            <Button className="btn" style={{margin: "20px 0 20px 0"}} variant="primary" type="button" onClick={this.userInfo}>
+            <Button className="btn-signup" style={{margin: "20px 0 20px 0"}} variant="primary" type="button" onClick={this.userInfo}>
                 Sign Up
             </Button>
             </Form>

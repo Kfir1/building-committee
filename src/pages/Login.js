@@ -43,7 +43,7 @@ render(){
     return(
         <div className="p-login" >
         
-      <Container sm={6} md={4} lg={3} className="img-login"> 
+      {/* <Container sm={6} md={4} lg={3} className="img-login">  */}
      
            {/* <Image  style={{width: "10%", height: "100%", opacity: "0.5"}} src="https://thumbs.dreamstime.com/b/nice-modern-apartment-buildings-city-40803762.jpg"></Image> */}
         <Form className="mt-5 form">
@@ -66,13 +66,15 @@ render(){
             {/* </Col> */}
         </Form.Group>
        
-        <Form.Group as={Row}>
-            {/* <Col sm={{ span: 10, offset: 0 }}> */}
-            <Button  onClick={this.handleLogin} variant="success" type="button">Log in</Button>
+        {/* <Form.Group> */}
+            {/* <Col sm={{ span: 100, offset: 0 }}> */}
+            <Button className="btn-login" onClick={this.handleLogin} variant="success" type="button">
+                Log in
+            </Button>
             {/* </Col> */}
-        </Form.Group>
+        {/* </Form.Group> */}
         </Form>
-        </Container>
+        {/* </Container> */}
         {/* <Link style={{marginBottom: "11px"}} to="/signup">Sign up</Link> */}
     </div>
     )

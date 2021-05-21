@@ -22,13 +22,14 @@
         
         
 }
-.btn {
+.btn-login {
     /* background-color: #04AA6D; */
     /* color: white; */
     /* padding: 16px 20px; */
     /* border: none; */
     cursor: pointer;
-    /* width: 100%; */
+    width: 100%;
+    margin-bottom: 7px;
     /* opacity: 0.9; */
   }
 /* input[type=text], input[type=password] {
@@ -43,7 +44,7 @@
     outline: none;
   } */
   
-.img-login{
+.p-login{
     /* position: relative; */
     background-image: url("https://lounge.placepass.com/wp-content/uploads/2017/07/IMG_0946.jpg");
     /* min-height: 380px; */

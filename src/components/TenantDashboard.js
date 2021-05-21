@@ -226,12 +226,14 @@ render(){
         
         { (issue.userId === this.props.activeUser.id) ? ( 
           <div>
-        <Button
+        <Button 
+        className="btn-tenant-dash"
         style={{float:"right", cursor:"pointer"}}
         onClick={() => this.openModal(index)}>
           Edit
         </Button>
         <Button
+        className="btn-tenant-dash"
         variant="danger"
         style={{float:"right", cursor:"pointer"}}
         onClick={() => {   this.removeIssue(index); }}>
@@ -267,11 +269,13 @@ console.log(this.props.allMessages);
       { (message.userId === this.props.activeUser.id) ? ( 
         <div>
       <Button
+      className="btn-tenant-dash"
       style={{float:"right", cursor:"pointer"}}
       onClick={() => this.openModalMessage(index)}>
         Edit
       </Button>
       <Button
+      className="btn-tenant-dash"
       variant="danger"
       style={{float:"right", cursor:"pointer"}}
       onClick={() => {   this.removeMessage(index); }}>

@@ -2,30 +2,30 @@
     {
         "userId": 1,
         "id": 1,
-        "title": "message number 1",
-        "details": "some desc1",
+        "title": "Monthly payment",
+        "details": "All tenants who have not yet paid their debt are required to do so by the end of the month",
         "priority": "Urgent",
         "priorityCode": 3,
-        "image": "https://24-7plumber.co.il/wp-content/uploads/2017/01/%D7%A4%D7%99%D7%A6%D7%95%D7%A5-%D7%A6%D7%99%D7%A0%D7%95%D7%A8-%D7%9E%D7%99%D7%9D-300x200.jpg"
+        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTglrIrEYFxxDMP-AyVL0gZ1uUGijC1oKXQ_A&usqp=CAU"
        
     },
     {
         "userId": 2,
         "id": 2,
-        "title": "message number 2",
-        "details": "some desc2",
+        "title": "Happy holiday",
+        "details": "The house committee wishes all the tenants a happy holiday",
         "priority": "Normal",
         "priorityCode": 1,
-        "image": "https://www.ynet.co.il/PicServer5/2017/11/06/8135570/s1.jpg"
+        "image": "https://c8.alamy.com/comp/R1JCRR/happy-holidays-handwriting-monogram-calligraphy-christmas-winter-holiday-symbol-in-a-watercolor-style-R1JCRR.jpg"
         
     },
     {
         "userId": 2,
         "id": 3,
-        "title": "message number 3",
-        "details": "some desc3",
+        "title": "Tenants meeting",
+        "details": "A tenants meeting is scheduled for next month and a date will be announced soon",
         "priority": "Important",
         "priorityCode": 2,
-        "image": "https://foruhome.com/wp-content/uploads/2018/03/plumber-leaking-pipes.jpg"
+        "image": "https://static.wixstatic.com/media/e3e17c_ddac1bbbac8745c384ce03a93ed0f868~mv2.png/v1/fill/w_900,h_450,al_c/e3e17c_ddac1bbbac8745c384ce03a93ed0f868~mv2.png"
     }
 ]
