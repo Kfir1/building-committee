@@ -10,7 +10,7 @@ class TenantDashboard extends React.Component{
     constructor(props){
         super(props)
         this.state = {
-          show: false,
+          // show: false,
           isModalOpen: false,
           editId: -1,
           issueTitle: '',
@@ -43,7 +43,7 @@ class TenantDashboard extends React.Component{
       })
     }
 
-   
+   //have to use different functions for modal. one for issue and one for message
     saveModalInfoMessage = () => {
       let newMessage = {
         title: this.state.messageTitle,
@@ -291,7 +291,7 @@ console.log(this.props.allMessages);
     return (
         <div>
          <h1> {activeUser} </h1>
-         <h2>Reported Issues</h2>
+         <h2>Issues</h2>
       
                  <IssuesList allIssues={allIssuesJSX}></IssuesList>
         <Modal show={this.state.isModalOpen} onHide={this.handleClose}>

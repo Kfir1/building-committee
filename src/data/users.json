@@ -6,8 +6,8 @@
         "email": "skarlinski@gmail.com",
         "password": "123",
         "address": "kalaniot 2",
-        "city": "beer sheva"
-        
+        "city": "beer sheva",
+        "apartment": "8"
     },
     {
         "isCommitteeMember": false,
@@ -16,7 +16,8 @@
         "email": "sara@gmail.com",
         "password": "abc",
         "address": "even gvirol 23",
-        "city": "tel aviv"
+        "city": "tel aviv",
+        "apartment": "13"
     },
     {
         "isCommitteeMember": false,
@@ -25,6 +26,7 @@
         "email": "jobs@gmail.com",
         "password": "abc",
         "address": "ha shalom 1",
-        "city": "ramat gan"
+        "city": "ramat gan",
+        "apartment": "4"
     }
 ]

@@ -8,7 +8,7 @@ class Dashboard extends React.Component {
         super(props);
         this.state = {
             allIssues: props.allIssues,
-            
+            //issues object from json comes to this function as props 
     }
     }
 
@@ -18,15 +18,17 @@ class Dashboard extends React.Component {
         }
     }
     sortedIssuesFunc=(sortType)=> {
-
+//sortType is parameter from from Sortedissues.jsx 
         let sortedIssues;
-        if(sortType==="priority"){
-            sortedIssues=this.state.allIssues.sort((a,b)=> b.priorityCode-a.priorityCode)
-        }
+        if(sortType==="priority"){  // check if parameter sortType equals string "priority"
+            sortedIssues=this.state.allIssues.sort((a,b)=> b.priorityCode-a.priorityCode) 
+        }  // sort by priorityCode (key from issues.json). have to sort by numbers (priorityCode is a number). could not sort by alphabet
+        
         this.setState({allIssues:sortedIssues})
-
+        // change the state. return a mutation of the object array as a sorted one. no need to return the allIssues object to parent (App.js) and save it to json (or other data base), because it is only for temporary rendering.
         console.log("from dashboard, type is", sortType);
-
+        console.log(this.props.allIssues);
+        console.log(this.state.allIssues);
     }
 
     render() {

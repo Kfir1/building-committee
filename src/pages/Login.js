@@ -1,7 +1,7 @@
 import React from 'react';
-import { Button, Col, Form, Row } from 'react-bootstrap';
+import { Button, Col, Container, Form, Image, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-
+import './Login.css';
 
 
 
@@ -42,35 +42,40 @@ handleLogin = () => {
 render(){
     return(
         <div className="p-login" >
-        <h1 style={{margin: "50px 0 70px 0"}}>Login</h1>
-       <div >
-        <Form className="mt-5" style={{marginRight: "500px"}}>
-        <Form.Group style={{marginBottom: "11px"}} as={Row} controlId="formHorizontalEmail" >
+        
+      <Container sm={6} md={4} lg={3} className="img-login"> 
+     
+           {/* <Image  style={{width: "10%", height: "100%", opacity: "0.5"}} src="https://thumbs.dreamstime.com/b/nice-modern-apartment-buildings-city-40803762.jpg"></Image> */}
+        <Form className="mt-5 form">
+        <h1 >Login</h1>
+        <Form.Group style={{marginBottom: "11px"}}  controlId="formHorizontalEmail" >
             <Form.Label column sm={2}>
             Email:
             </Form.Label>
-            <Col sm={10}>
+            {/* <Col sm={10}> */}
             <Form.Control  type="email" placeholder="Email" name="email" onChange={this.updateEmail} value={this.state.email}/>
-            </Col>
+            {/* </Col> */}
         </Form.Group>
 
-        <Form.Group style={{marginBottom: "22px"}} as={Row} controlId="formHorizontalPassword">
+        <Form.Group style={{marginBottom: "22px"}} controlId="formHorizontalPassword">
             <Form.Label column sm={2}>
             Password:
             </Form.Label>
-            <Col sm={10}>
+            {/* <Col sm={10}> */}
             <Form.Control type="password" placeholder="Password" name="password" onChange={this.updatePass} value={this.state.password}/>
-            </Col>
+            {/* </Col> */}
         </Form.Group>
        
-        <Form.Group style={{marginBottom: "11px"}} as={Row}>
-            <Col sm={{ span: 10, offset: 2 }}>
+        <Form.Group as={Row}>
+            {/* <Col sm={{ span: 10, offset: 0 }}> */}
             <Button  onClick={this.handleLogin} variant="success" type="button">Log in</Button>
-            </Col>
+            {/* </Col> */}
         </Form.Group>
         </Form>
-        </div>
+        </Container>
         {/* <Link style={{marginBottom: "11px"}} to="/signup">Sign up</Link> */}
+    
+
     </div>
     )
 }
@@ -79,3 +84,6 @@ render(){
 }
 
 export default Login
+
+
+
