@@ -43,7 +43,7 @@ class Dashboard extends React.Component {
         if (this.props.activeUser && this.props.activeUser.isCommitteeMember) {
 
             template = <CommitteeDashboard
-                allIssues={this.state.allIssues}
+                allIssues={this.props.allIssues}
                 addIssue={this.props.addIssue}
                 removeIssue={this.props.removeIssue}
                 activeUser={this.props.activeUser}
@@ -53,7 +53,7 @@ class Dashboard extends React.Component {
         }
         else if (this.props.activeUser) {
             template = <TenantDashboard
-                allIssues={this.state.allIssues}
+                allIssues={this.props.allIssues}
                 addIssue={this.props.addIssue}
                 removeIssue={this.props.removeIssue}
                 activeUser={this.props.activeUser}
@@ -65,7 +65,7 @@ class Dashboard extends React.Component {
         }
         return (
             <div>
-                <SortedIssues sortedIssuesFunc={this.sortedIssuesFunc} />
+                {/* <SortedIssues sortedIssuesFunc={this.sortedIssuesFunc} /> */}
                 {template}
             </div>
         )

@@ -24,12 +24,12 @@ class CommitteeDashboard extends React.Component{
           committeeMemberComment:""
         }
     }
+
     handleClose = () =>{
       this.setState({
           isModalOpen: false,
       })
     }
-
     
     saveModalInfo = () =>{
  
@@ -51,7 +51,7 @@ class CommitteeDashboard extends React.Component{
         image: "",
         committeeMemberComment: "",
       });
-debugger
+
       if( newIssue.issueTitle &&  newIssue.description){ 
         // passing editId to App.js
         // console.log(newIssue,editId);

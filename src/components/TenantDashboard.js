@@ -5,6 +5,9 @@ import { Accordion, Card, Button, Modal, Row, Col, Form } from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.css';
 import IssuesList from './IssuesList';
 import MessagesList from './MessagesList'
+import AddIssue from './addIssue';
+
+
 
 class TenantDashboard extends React.Component{
     constructor(props){
@@ -13,8 +16,8 @@ class TenantDashboard extends React.Component{
           // show: false,
           isModalOpen: false,
           editId: -1,
-          issueTitle: '',
-          issueDescription: '',
+          // issueTitle: '',
+          // issueDescription: '',
           Title: '',
           Description: '',
           // default priority set to normal
@@ -75,7 +78,7 @@ class TenantDashboard extends React.Component{
     }
 
     saveModalInfo = () =>{
-      
+      //json keys: current state value in component
       let newIssue = {
         issueTitle: this.state.Title,
         description: this.state.Description,
@@ -97,7 +100,7 @@ class TenantDashboard extends React.Component{
 
 
       //if: check if  newIssue.issueTitle  newIssue.description   newIssue.priority  exists
-      if( newIssue.issueTitle &&  newIssue.description && newIssue.priority){ 
+      if( newIssue.issueTitle &&  newIssue.description){ 
         // passing editId to App.js
       this.props.addIssue(newIssue, editId);
       }
@@ -316,9 +319,7 @@ console.log(this.props.allMessages);
                      value={this.state.Title}
                      onChange={(event)=> {this.setState({Title: event.target.value})}}
                       />
-                
                 </Col>
-
                 <Form.Label column sm={2}>
                 Description:
                 </Form.Label>
@@ -335,7 +336,11 @@ console.log(this.props.allMessages);
                     Priority:
                 </Form.Label>
                 <Col sm={10}>
-                <Form.Control required={true}  value={this.state.priority} as="select" custom   onChange={(event)=> {this.setState({priority: event.target.value})}}>
+                <Form.Control 
+                required={true}
+                  value={this.state.priority}
+                   as="select" custom
+                   onChange={(event)=> {this.setState({priority: event.target.value})}}>
                     <option value="Normal">Normal</option>
                     <option value="Important">Important</option>
                     <option value="Urgent">Urgent</option>
@@ -364,13 +369,23 @@ console.log(this.props.allMessages);
             </Button>
             </Modal.Body>
         </Modal>
-            <Button style={{marginTop: "22px", marginBottom: "22px"}} variant="secondary" onClick={this.openModal} >
+            <Button style={{marginTop: "22px", marginBottom: "22px"}} variant="secondary" onClick={() => { this.openModal() } } >
                 Add Issue
             </Button>
      
 
-
-
+          {/* optional to render. from another compo */}
+            {/* <AddIssue             
+              allIssues={this.props.allIssues}
+              addIssue={this.props.addIssue}
+              removeIssue={this.props.removeIssue}
+              activeUser={this.props.activeUser}
+              allMessages={this.props.allMessages}
+              addMessage={this.props.addMessage}
+              removeMessage={this.props.removeMessage}
+            >
+            </AddIssue>
+ */}
 
 
 

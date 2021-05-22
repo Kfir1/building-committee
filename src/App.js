@@ -71,7 +71,7 @@ class App extends React.Component{
         if ( typeof index === "undefined" ){
           index = -1;
         }
-  
+        console.log("addIssue", index);
         if(index > -1) {
           this.setState({
             allIssues: this.state.allIssues.map((issue, rowIndex) => {
@@ -84,6 +84,7 @@ class App extends React.Component{
             })
           });
         } else {
+          console.log(this.state.allIssues, newIssue);
           this.setState({
             allIssues: this.state.allIssues.concat(newIssue)
           });  
