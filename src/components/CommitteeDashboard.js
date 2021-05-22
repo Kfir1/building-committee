@@ -51,9 +51,11 @@ class CommitteeDashboard extends React.Component{
         image: "",
         committeeMemberComment: "",
       });
-
-      if( newIssue.issueTitle &&  newIssue.description && newIssue.priority){ 
+debugger
+      if( newIssue.issueTitle &&  newIssue.description){ 
         // passing editId to App.js
+        // console.log(newIssue,editId);
+
         this.props.addIssue(newIssue, editId);
       }
 
@@ -139,11 +141,11 @@ render(){
           // id from  issues json object
             <Card key={issue.id}>
     <Card.Header>
-      <Accordion.Toggle as={Button} variant="link" eventKey="0">
+      <Accordion.Toggle as={Button} variant="link" eventKey="1">
         { issue.issueTitle}   
       </Accordion.Toggle>
     </Card.Header>
-    <Accordion.Collapse eventKey="0">
+    <Accordion.Collapse eventKey="1">
       <Card.Body>
         
         <p>Description: {issue.description}</p> 
@@ -185,7 +187,8 @@ render(){
 
     return (
         <div>
-           <h1>New Reported Issues</h1>
+           <h1> {activeUser} </h1>
+           <h1>Reported Issues</h1>
       <IssuesList allIssues={allIssuesJSX}></IssuesList>
       <Modal show={this.state.isModalOpen} onHide={this.handleClose}>
             <Modal.Header closeButton>

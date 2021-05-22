@@ -8,7 +8,7 @@ class Dashboard extends React.Component {
         super(props);
         this.state = {
             allIssues: props.allIssues,
-            //issues object from json comes to this function as props 
+            //issues object from json comes to this function as props in state
     }
     }
 

@@ -69,7 +69,7 @@ class TenantDashboard extends React.Component{
       this.props.addMessage(newMessage, messageEditId);
       }
     } 
-    // pass id from remove issue to 
+    // pass id from removeMessage  to App
     removeMessage = (id) => {
       this.props.removeMessage(id);
     }
@@ -122,7 +122,7 @@ class TenantDashboard extends React.Component{
       let editPriority = "";
       let editImage = "";
       let editCommitteeMemberComment = "";
-      //check id received from map array. get issues by their id and 
+      //check id received from map array. get issues by their id 
       if (id > -1) {
         editDescription = this.props.allIssues[id].description;
         editTitle = this.props.allIssues[id].issueTitle;
@@ -189,7 +189,7 @@ class TenantDashboard extends React.Component{
           this.setState({
             isModalOpenMessages: true,
           })
-    // update state and edit existing issues
+    // update state and edit existing message
 
         this.setState({
           messageEditId: id,
@@ -205,7 +205,7 @@ class TenantDashboard extends React.Component{
 render(){
   // get the name of activeUser to show as h1
     const activeUser = this.props.activeUser.name;
-
+// map to get the list of all issues
     const allIssuesJSX = this.props.allIssues.map((issue,index) => {
         return (
           // id from  issues json object
@@ -278,7 +278,7 @@ console.log(this.props.allMessages);
       className="btn-tenant-dash"
       variant="danger"
       style={{float:"right", cursor:"pointer"}}
-      onClick={() => {   this.removeMessage(index); }}>
+      onClick={() => { this.removeMessage(index) }}>
         Remove
       </Button>
       </div>
@@ -293,7 +293,7 @@ console.log(this.props.allMessages);
     
 
     return (
-        <div className="tenant"> 
+        <div className="tenant-frame"> 
          <h1> {activeUser} </h1>
          <h2>Issues</h2>
       
@@ -384,7 +384,7 @@ console.log(this.props.allMessages);
             <Modal.Title>{this.state.messageEditId > -1 ? `Edit Message #${this.state.messageEditId +1 }` : "Add Message"}</Modal.Title>
             </Modal.Header>
             <Modal.Body>
-            {/* <Form.Group as={Row} > */}
+        
                 <Form.Label column sm={2}>
                 Issue:
                 </Form.Label>
@@ -431,7 +431,7 @@ console.log(this.props.allMessages);
        
              
             
-            {/* </Form.Group> */}
+    
                                                 
             <Button variant="secondary" onClick={this.handleCloseMessages}>
                 Close

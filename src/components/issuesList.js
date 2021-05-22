@@ -10,10 +10,6 @@ class IssuesList extends React.Component{
     
 } 
 
-
-
-
-
 render(){
 
     return(

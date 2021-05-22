@@ -70,10 +70,8 @@ render(){
 
     return(
         <div className="background">
-            {/* <Container   md={4} sm={12} lg={6}> */}
-            {/* <Row >   */}
-            {/* <Col md={4} sm={12} lg={6}> */}
-                <Form className="form" style={{backgroundColor: "skyblue"}} style={{paddingTop: "40px"}}>
+      
+                <Form className="form">
                 <h1 style={{margin: "0px 0 20px 0"}}>Sign Up</h1>
             <Form.Group controlId="formBasicEmail" style={{marginBottom: "10px"}} >
                 <Form.Label style={{fontSize: "15px"}}>Name:</Form.Label>
@@ -103,13 +101,7 @@ render(){
                 Sign Up
             </Button>
             </Form>
-            {/* </Col> */}
-            {/* <Col md={6} sm={12} lg={6}> */}
-            {/* <Image  style={{ width: "100%", borderRadius: "50px", paddingLeft: "10px", margin: "20px auto 20px auto"}} src="https://i.pinimg.com/originals/84/ba/9e/84ba9e7f25805711179b64d2d623d1e0.jpg"  /> */}
-           
-            {/* </Col> */}
-            {/* </Row> */}
-            {/* </Container> */}
+      
             {/* <div> { {allUsers} }</div> */}
     </div>
     )

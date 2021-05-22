@@ -6,8 +6,8 @@
         "description": "Irrigation Pipe Leakage",
         "priority": "Urgent",
         "priorityCode": 3,
-        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4e0sWHoG9BJ8GHhnTyeeCHfU8iFZ7usrvZA&usqp=CAU"
-       
+        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4e0sWHoG9BJ8GHhnTyeeCHfU8iFZ7usrvZA&usqp=CAU",
+        "committeeMemberComment":"comment"
     },
     {
         "userId": 2,

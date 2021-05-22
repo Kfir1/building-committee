@@ -2,7 +2,7 @@
     {  
          "isCommitteeMember": true,
         "id":1,
-        "name": "John doe",
+        "name": "John Doe (Committee Member)",
         "email": "skarlinski@gmail.com",
         "password": "123",
         "address": "even gvirol 23",
@@ -12,7 +12,7 @@
     {
         "isCommitteeMember": false,
         "id":2,
-        "name": "sara doe",
+        "name": "Sara Doe (Tenant)",
         "email": "sara@gmail.com",
         "password": "abc",
         "address": "even gvirol 23",
@@ -22,7 +22,7 @@
     {
         "isCommitteeMember": false,
         "id":3,
-        "name": "steve jobs",
+        "name": "Steve Jobs (Tenant)",
         "email": "jobs@gmail.com",
         "password": "abc",
         "address": "even gvirol 23",
