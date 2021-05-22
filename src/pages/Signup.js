@@ -33,7 +33,7 @@ userInfo = () => {
         address: this.state.address,
         city: this.state.city,
     }
-    
+   
     // check if inputs in obj not empty. if not add user in App
     if(memberObj.name !== "" && memberObj.email !== "" && memberObj.password !== "" && memberObj.address !== "" && memberObj.city !== ""  ){
         this.props.addUser(memberObj)

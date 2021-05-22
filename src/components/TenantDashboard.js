@@ -55,7 +55,7 @@ class TenantDashboard extends React.Component{
       // console.log(newMessage);
       const messageEditId = this.state.messageEditId;
       this.setState({
-          isModalOpen: false,
+        isModalOpenMessages: false,
           messageTitle: "",
           messageDetails: "",
           messagePriority: "Info",
