@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Button, Col, Container, Form, Image, Row } from 'react-bootstrap';
+import { Accordion, Button, Card, Col, Container, Form, Image, Row } from 'react-bootstrap';
 import './Signup.css';
 
 class Signup extends React.Component{
@@ -57,17 +57,28 @@ userInfo = () => {
 
 
 render(){
-    //get the list of registered users
-//    const allUsers = this.props.allUsers.map((user)=>{
-//        return <tr>
-//            <td>{user.name}</td>
-//            <td>{user.email}</td>
-//            <td>{user.password}</td>
-//            <td>{user.address}</td>
-//            <td>{user.city}</td>
-//        </tr>
-//    });
-
+    // get the list of registered users
+   const allUsers = this.props.allUsers.map((user)=>{
+       return <tr>
+           <td>{user.name}</td>
+           <td>{user.email}</td>
+           <td>{user.password}</td>
+           <td>{user.address}</td>
+           <td>{user.city}</td>
+       </tr>
+   });
+<Accordion defaultActiveKey="0">
+  <Card>
+    <Card.Header>
+      <Accordion.Toggle as={Button} variant="link" eventKey="0">
+        Click me!
+      </Accordion.Toggle>
+    </Card.Header>
+    <Accordion.Collapse eventKey="0">
+      <Card.Body>allUsers</Card.Body>
+    </Accordion.Collapse>
+  </Card>
+</Accordion>
     return(
         <div className="background">
       
@@ -102,7 +113,7 @@ render(){
             </Button>
             </Form>
       
-            {/* <div> { {allUsers} }</div> */}
+            <div> { allUsers}</div>
     </div>
     )
 }

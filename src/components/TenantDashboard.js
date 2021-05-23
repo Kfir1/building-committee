@@ -280,16 +280,19 @@ render(){
     </Card.Header>
     <Accordion.Collapse eventKey={index+1}>
       <Card.Body>
+        <Row>
+          <Col>
+          <img src={issue.image}/>
+        </Col>
+        <Col>
+        <p><strong>Description:</strong> {issue.description}</p> 
         
-        <p>Description: {issue.description}</p> 
-        
-        <p>Priority: {issue.priority}</p>
-        
-        <img src={issue.image}/>
-          
-        <p>Issue Post Date: { issue.timeStamp.format('DD-MM-YYYY') }</p>
+        <p><strong>Priority: </strong> {issue.priority}</p>
 
-        <p>Committee Member Comment: {issue.committeeMemberComment}</p>
+        <p><strong>Issue Post Date: </strong>{ issue.timeStamp.format('DD-MM-YYYY') }</p>
+        </Col>
+        </Row>
+        {/* <p>Committee Member Comment: {issue.committeeMemberComment}</p> */}
 
         { (issue.userId === this.props.activeUser.id) ? ( 
           <div>
@@ -327,9 +330,9 @@ console.log(this.props.allMessages);
   <Accordion.Collapse eventKey="1">
     <Card.Body>
       
-      <p>Details: {message.details}</p> 
+      <p><strong>Details:</strong> {message.details}</p> 
       
-      <p>Priority: {message.priority}</p>
+      <p><strong>Priority:</strong> {message.priority}</p>
       
       <img src={message.image}/>
       

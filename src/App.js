@@ -13,6 +13,7 @@ import jsonData from './data/users.json';
 import issuesData from './data/issues.json';
 import messagesData from './data/messages.json';
 import moment from 'moment';
+import TenantAccount from './pages/TenantAccount';
 
 class App extends React.Component{
       constructor(props) {
@@ -80,7 +81,16 @@ class App extends React.Component{
           activeUser: null,
         })
       }
-
+      //issueIndex is the index of the issue inside the state of issues
+      //comment is the description of the comment from the textbox (html)
+      //commentIndex is a non-mandatory parameter. index of the comment if we are in edit mode.
+      // pass the addComment function down the props, all the way into CommiteeDashboard and TenantDashboard. 
+      addComment = (issueIndex, comment, commentIndex) => {
+        if ( typeof index === "undefined" ){
+          commentIndex = -1;
+        }
+        //TODO: write the logic of the function. base it on addIssue.
+      }
 
       // newIssue is new object, index is the place
       addIssue = (newIssue, index) => {
@@ -162,7 +172,7 @@ class App extends React.Component{
       render(){
             return (
               <HashRouter>
-                      <Route exact path={['/', '/login', '/Signup','/dashboard']}>
+                      <Route exact path={['/', '/login', '/Signup','/dashboard','/tenantAccount']}>
                           <VaadNavbar
                           activeUser={this.state.activeUser}
                           logout={this.logout}
@@ -205,6 +215,12 @@ class App extends React.Component{
                             allUsers={this.state.allUsers}
                             sortedIssuesAdd={this.sortedIssuesAdd}
                             ></Login>
+                        </Route>
+                        <Route exact path="/tenantAccount">
+                            <TenantAccount
+                            allUsers={this.state.allUsers}
+                            addUser={this.addUser}
+                            ></TenantAccount>
                         </Route>
                       </Container>
                </HashRouter>

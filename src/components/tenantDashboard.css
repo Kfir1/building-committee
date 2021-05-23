@@ -1,17 +1,18 @@
-h2 , h1{
+h2,
+h1 {
     text-align: center;
-    
+
 }
 
-img{
-    width: 25rem;
+img {
+    width: 15rem;
 }
 
 /* .col-sm-10{
     margin-left: 1px;
 }  */
 
-.btn-tenant-dash{
+.btn-tenant-dash {
     margin: 10px;
 }
 
