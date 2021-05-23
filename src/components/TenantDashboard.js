@@ -86,6 +86,7 @@ class TenantDashboard extends React.Component{
         description: this.state.Description,
         priority: this.state.priority,
         image: this.state.image,
+        timeStamp: Date.now(),
         userId: this.props.activeUser.id,
       }
 
@@ -210,11 +211,21 @@ class TenantDashboard extends React.Component{
 
         console.log(event);
       if(event === "Priority"){
-        
+    
           this.setState({
-            sortedIssues :  this.props.allIssues.sort((a,b)=> b.priorityCode-a.priorityCode) 
+            allIssues :  this.props.allIssues.sort((a,b)=> b.priorityCode-a.priorityCode) 
           }) 
       }
+  }
+    filterIssues = (event) => {
+
+      console.log(event);
+    if(event === "Priority"){
+
+        this.setState({
+          allIssues :  this.props.allIssues.filter((a,b)=> b.priorityCode-a.priorityCode) 
+        }) 
+    }
   }
     
 render(){
@@ -226,11 +237,11 @@ render(){
           // id from  issues json object
             <Card key={issue.id}>
     <Card.Header>
-      <Accordion.Toggle as={Button} variant="link" eventKey="1">
+      <Accordion.Toggle as={Button} variant="link" eventKey={index+1}>
         {   issue.issueTitle  }   
       </Accordion.Toggle>
     </Card.Header>
-    <Accordion.Collapse eventKey="1">
+    <Accordion.Collapse eventKey={index+1}>
       <Card.Body>
         
         <p>Description: {issue.description}</p> 
@@ -240,6 +251,7 @@ render(){
         <img src={issue.image}/>
         
         <p>Committee Member Comment: {issue.committeeMemberComment}</p>
+
 
         { (issue.userId === this.props.activeUser.id) ? ( 
           <div>
@@ -313,7 +325,15 @@ console.log(this.props.allMessages);
         <div className="tenant-frame"> 
          <h1> {activeUser} </h1>
          <h2>Issues</h2>
-      
+
+
+                    <select onChange={(event) =>  {this.sortedIssues(event.target.value)}}>
+                        <option selected >Filter By</option>
+                        <option value="Date">Date</option>
+                        <option value="Priority">Priority</option>
+                    </select> 
+
+                    
                     <select onChange={(event) =>  {this.sortedIssues(event.target.value)}}>
                         <option selected >Sort By</option>
                         <option value="Date">Date</option>

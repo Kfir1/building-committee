@@ -18,9 +18,19 @@ class App extends React.Component{
         super(props);
         this.state = {
           allUsers: jsonData,
-          activeUser: null, 
+          // activeUser: null, 
           allIssues: issuesData,
           allMessages: messagesData,
+          activeUser:{
+            "isCommitteeMember": false,
+            "id":2,
+            "name": "Sara Doe (Tenant)",
+            "email": "sara@gmail.com",
+            "password": "abc",
+            "address": "even gvirol 23",
+            "city": "tel aviv",
+            "apartment": "13"
+          }
         }
       }
 
