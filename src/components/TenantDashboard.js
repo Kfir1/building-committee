@@ -32,6 +32,8 @@ class TenantDashboard extends React.Component{
             // default priority set to Info
           messagePriority: "Info",
           messageImage: null,
+
+          priorityCode:"",
         }
     }
 
@@ -155,7 +157,7 @@ class TenantDashboard extends React.Component{
          comment: editCommitteeMemberComment
        
       });
-    
+      
     }
 
      
@@ -173,7 +175,7 @@ class TenantDashboard extends React.Component{
         let editMessagePriority = "";
         let editMessageImage = "";
        
-        //check id received from map array. get issues by their id and 
+        //check id received from map array. get issues by their id 
         if (id > -1) {
           editMessageDetails = this.props.allMessages[id].details;
           editMessageTitle = this.props.allMessages[id].title;
@@ -204,6 +206,16 @@ class TenantDashboard extends React.Component{
         });
     }
 
+    sortedIssues = (event) => {
+
+        console.log(event);
+      if(event === "Priority"){
+        
+          this.setState({
+            sortedIssues :  this.props.allIssues.sort((a,b)=> b.priorityCode-a.priorityCode) 
+          }) 
+      }
+  }
     
 render(){
   // get the name of activeUser to show as h1
@@ -227,6 +239,8 @@ render(){
         
         <img src={issue.image}/>
         
+        <p>Committee Member Comment: {issue.committeeMemberComment}</p>
+
         { (issue.userId === this.props.activeUser.id) ? ( 
           <div>
         <Button 
@@ -300,6 +314,12 @@ console.log(this.props.allMessages);
          <h1> {activeUser} </h1>
          <h2>Issues</h2>
       
+                    <select onChange={(event) =>  {this.sortedIssues(event.target.value)}}>
+                        <option selected >Sort By</option>
+                        <option value="Date">Date</option>
+                        <option value="Priority">Priority</option>
+                    </select>
+              
                  <IssuesList allIssues={allIssuesJSX}></IssuesList>
 
         <Modal show={this.state.isModalOpen} onHide={this.handleClose}>
@@ -374,7 +394,7 @@ console.log(this.props.allMessages);
             </Button>
      
 
-          {/* optional to render. from another compo */}
+          {/* optional to render. from another component */}
             {/* <AddIssue             
               allIssues={this.props.allIssues}
               addIssue={this.props.addIssue}

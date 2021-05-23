@@ -9,13 +9,13 @@ class CommitteeDashboard extends React.Component{
     constructor(props){
         super(props)
         this.state = {
-          show: false,
+          // show: false,
           // newTenantIssue: issueInfo
           isModalOpen: false,
           isCommentModalOpen: false,
           editId: -1,
-          issueTitle: '',
-          issueDescription: '',
+          // issueTitle: '',
+          // issueDescription: '',
           Title: '',
           Description: '',
           // default priority set to normal
@@ -152,6 +152,8 @@ render(){
         
         <p>Priority: {issue.priority}</p>
         
+        <img src={issue.image}/>
+
         { (issue.userId === this.props.activeUser.id) ? ( 
           // conditional ternary on button to show button only by user id
           <div>
@@ -188,7 +190,7 @@ render(){
     return (
         <div>
            <h1> {activeUser} </h1>
-           <h1>Reported Issues</h1>
+           <h1>Issues</h1>
       <IssuesList allIssues={allIssuesJSX}></IssuesList>
       <Modal show={this.state.isModalOpen} onHide={this.handleClose}>
             <Modal.Header closeButton>

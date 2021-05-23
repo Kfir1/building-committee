@@ -124,16 +124,19 @@ class App extends React.Component{
           allMessages: this.state.allMessages.filter( (v, i) => { return i !== index; })
         });
       }
-      // addCommitteeMemberComment = (comment, indexOfComment) =>{
-      //     if (typeof indexOfComment === "undefined") {
-      //           index = -1;
-      //     }
-      //     if(index > -1)
-      //     this.setState({
-      //         allIssues: this.state.a
-      //     })
-      // } 
+      addCommitteeMemberComment = (comment, indexOfComment) =>{
+          if (typeof indexOfComment === "undefined") {
+            indexOfComment = -1;
+          }
+          if(indexOfComment > -1)
+          this.setState({
+              allIssues: this.state.allIssues.concat(comment)
+          })
+      } 
 
+      // sortIssue = (sortedIssuesArrObj) =>{
+
+      // }
 
       render(){
             return (
