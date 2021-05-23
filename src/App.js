@@ -12,6 +12,7 @@ import Dashboard from './pages/Dashboard';
 import jsonData from './data/users.json';
 import issuesData from './data/issues.json';
 import messagesData from './data/messages.json';
+import moment from 'moment';
 
 class App extends React.Component{
       constructor(props) {
@@ -19,7 +20,12 @@ class App extends React.Component{
         this.state = {
           allUsers: jsonData,
           // activeUser: null, 
-          allIssues: issuesData,
+          allIssues: issuesData.map( (issue) => {
+            return { 
+              ...issue, // put all key values from the original object
+              timeStamp: moment(issue.timeStamp),  // change only the the timeStamp key value using moment method  moment(issue.timeStamp)  convert  issue.timeStamp to momnet object
+            }
+          } ),
           allMessages: messagesData,
           activeUser:{
             "isCommitteeMember": false,

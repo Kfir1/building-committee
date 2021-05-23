@@ -6,7 +6,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import IssuesList from './IssuesList';
 import MessagesList from './MessagesList'
 import AddIssue from './addIssue';
-
+import moment from 'moment';
 
 // another solution for sort priority selection 
 // const priorityCodes = {
@@ -18,11 +18,9 @@ class TenantDashboard extends React.Component{
     constructor(props){
         super(props)
         this.state = {
-          // show: false,
+      
           isModalOpen: false,
           editId: -1,
-          // issueTitle: '',
-          // issueDescription: '',
           Title: '',
           Description: '',
           // default priority set to normal
@@ -99,13 +97,14 @@ class TenantDashboard extends React.Component{
         priority: this.state.priority,
         image: this.state.image,
         //              
-        priorityCode: priorityCodes[this.state.priority],
+        // priorityCode: priorityCodes[this.state.priority],
         committeeMemberComment:"",
-        timeStamp: Date.now(),
+        // timeStamp: Date.now(),
+        timeStamp: moment(),
         //check moment
         userId: this.props.activeUser.id,
       }
-
+      console.log(newIssue.timeStamp.format('DD-MM-YYYY'));
   
       const editId = this.state.editId;
       this.setState({
@@ -254,10 +253,10 @@ render(){
   if(this.state.newSortedIssue == "Priority"){
       sortedIssues = this.props.allIssues.slice().sort((a,b)=> b.priorityCode-a.priorityCode)
   } 
-  // for Date
-   // else if (this.state.newSortedIssue == "Date"){
-  //   sortedIssues =  this.props.allIssues.slice().sort((a,b)=> b.priorityCode-a.priorityCode)
-  // }
+  // for Date .  a.timeStamp.diff(b.timeStamp)    checks the differnce between 2 dates
+   else if (this.state.newSortedIssue == "Date"){
+    sortedIssues =  this.props.allIssues.slice().sort((a,b)=> a.timeStamp.diff(b.timeStamp) > 0 ? -1 : 1)
+  }
   else{
     sortedIssues = this.props.allIssues;
   }
@@ -276,7 +275,7 @@ render(){
             <Card key={issue.id}>
     <Card.Header>
       <Accordion.Toggle as={Button} variant="link" eventKey={index+1}>
-        {   issue.issueTitle  }   
+        {   issue.issueTitle  }  
       </Accordion.Toggle>
     </Card.Header>
     <Accordion.Collapse eventKey={index+1}>
@@ -287,9 +286,10 @@ render(){
         <p>Priority: {issue.priority}</p>
         
         <img src={issue.image}/>
-        
-        <p>Committee Member Comment: {issue.committeeMemberComment}</p>
+          
+        <p>Issue Post Date: { issue.timeStamp.format('DD-MM-YYYY') }</p>
 
+        <p>Committee Member Comment: {issue.committeeMemberComment}</p>
 
         { (issue.userId === this.props.activeUser.id) ? ( 
           <div>
@@ -356,6 +356,7 @@ console.log(this.props.allMessages);
        
       )
   } )
+  
 
     
 
@@ -408,7 +409,7 @@ console.log(this.props.allMessages);
                 <Col sm={10}>
                   <Form.Control  
                    required={true} 
-                    type="text" 
+                   as="textarea"
                     placeholder="description"
                     value={this.state.Description}
                     onChange={(event)=> {this.setState({Description: event.target.value})}}
@@ -438,7 +439,7 @@ console.log(this.props.allMessages);
                  onChange={(event)=> {this.setState({image: event.target.value})}}>
                  </Form.Control>
                 </Col>
-       
+
              
             
             {/* </Form.Group> */}

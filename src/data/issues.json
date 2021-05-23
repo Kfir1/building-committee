@@ -8,7 +8,7 @@
         "priorityCode": 3,
         "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4e0sWHoG9BJ8GHhnTyeeCHfU8iFZ7usrvZA&usqp=CAU",
         "committeeMemberComment":"comment",
-        "timestamp":1617224400000
+        "timeStamp":"2021-04-01"
     },
     {
         "userId": 2,
@@ -19,7 +19,7 @@
         "priorityCode": 1,
         "image": "https://www.roundhayroofing.co.uk/wp-content/uploads/2016/01/roof-leaking-water-damage.jpg",
         "committeeMemberComment":"comment",
-        "timestamp":1617284400000
+        "timeStamp": "2021-02-01"
 
     },
     {
@@ -31,7 +31,7 @@
         "priorityCode": 2,
         "image": "https://image.shutterstock.com/image-photo/concrete-stairs-broken-260nw-1083005699.jpg",
         "committeeMemberComment":"comment",
-        "timestamp":1617184400000
+        "timeStamp":"2021-03-05"
    
     }
 
