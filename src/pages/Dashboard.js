@@ -64,6 +64,7 @@ class Dashboard extends React.Component {
                 allMessages={this.props.allMessages}
                 addMessage={this.props.addMessage}
                 removeMessage={this.props.removeMessage}
+                sortedIssuesAdd={this.props.sortedIssuesAdd}
             >
             </TenantDashboard>
         }

@@ -144,8 +144,13 @@ class App extends React.Component{
           })
       } 
 
-      // sortIssue = (sortedIssuesArrObj) =>{
+      // sortedIssuesAdd = (sorted) => {
+      //   this.setState({allIssues: this.state.allIssues.concat(allIssues)
+      //   })
 
+      // }
+      // sortIssue = (sortedIssuesArrObj) =>{
+      
       // }
 
       render(){
@@ -192,6 +197,7 @@ class App extends React.Component{
                             <Login
                             login={this.login}
                             allUsers={this.state.allUsers}
+                            sortedIssuesAdd={this.sortedIssuesAdd}
                             ></Login>
                         </Route>
                       </Container>

@@ -8,7 +8,12 @@ import MessagesList from './MessagesList'
 import AddIssue from './addIssue';
 
 
-
+// another solution for sort priority selection 
+// const priorityCodes = {
+//   Normal: 1,
+//   Important: 2,
+//   Urgent: 3,
+// }
 class TenantDashboard extends React.Component{
     constructor(props){
         super(props)
@@ -23,6 +28,7 @@ class TenantDashboard extends React.Component{
           // default priority set to normal
           priority:'Normal',
           image: null,
+          committeeMemberComment:"",
           
 
           isModalOpenMessages: false,
@@ -33,7 +39,13 @@ class TenantDashboard extends React.Component{
           messagePriority: "Info",
           messageImage: null,
 
+          // priorityCode for sort by priority number in json
           priorityCode:"",
+
+          newSortedIssue:'',
+
+          searchText:"",
+          
         }
     }
 
@@ -86,7 +98,11 @@ class TenantDashboard extends React.Component{
         description: this.state.Description,
         priority: this.state.priority,
         image: this.state.image,
+        //              
+        priorityCode: priorityCodes[this.state.priority],
+        committeeMemberComment:"",
         timeStamp: Date.now(),
+        //check moment
         userId: this.props.activeUser.id,
       }
 
@@ -208,31 +224,53 @@ class TenantDashboard extends React.Component{
     }
 
     sortedIssues = (event) => {
-
+      // let  newSortedIssue = { allIssues: this.state.newSortedIssue};
         console.log(event);
       if(event === "Priority"){
-    
-          this.setState({
-            allIssues :  this.props.allIssues.sort((a,b)=> b.priorityCode-a.priorityCode) 
-          }) 
+         
+          // this.setState({
+         
+          //    allIssues :  this.props.allIssues.sort((a,b)=> b.priorityCode-a.priorityCode) 
+          //   // }
+          //   }) 
       }
+      // this.props.sortedIssuesAdd(newSortedIssue);
   }
-    filterIssues = (event) => {
 
-      console.log(event);
-    if(event === "Priority"){
+  
+  //   filterIssues = (event) => {
 
-        this.setState({
-          allIssues :  this.props.allIssues.filter((a,b)=> b.priorityCode-a.priorityCode) 
-        }) 
-    }
-  }
+  //     console.log(event);
+  //   if(event === "Priority"){
+
+  //       this.setState({
+  //         allIssues :  this.props.allIssues.filter((a,b)=> b.priorityCode-a.priorityCode) 
+  //       }) 
+  //   }
+  // }
     
 render(){
+  let sortedIssues = [];
+  if(this.state.newSortedIssue == "Priority"){
+      sortedIssues = this.props.allIssues.slice().sort((a,b)=> b.priorityCode-a.priorityCode)
+  } 
+  // for Date
+   // else if (this.state.newSortedIssue == "Date"){
+  //   sortedIssues =  this.props.allIssues.slice().sort((a,b)=> b.priorityCode-a.priorityCode)
+  // }
+  else{
+    sortedIssues = this.props.allIssues;
+  }
+  // issue.issueTitle.toUpperCase()  title to upper case   . this.state.searchText.toUpperCase()  input from user to upper case (user search)
+  const filteredIssues = sortedIssues.filter((issue)=> issue.issueTitle.toUpperCase().includes(this.state.searchText.toUpperCase()));
+
+
+
+  // const filtered = this.props.allIssues.filter((issue)).map()
   // get the name of activeUser to show as h1
     const activeUser = this.props.activeUser.name;
 // map to get the list of all issues
-    const allIssuesJSX = this.props.allIssues.map((issue,index) => {
+    const allIssuesJSX = filteredIssues.map((issue,index) => {
         return (
           // id from  issues json object
             <Card key={issue.id}>
@@ -327,19 +365,23 @@ console.log(this.props.allMessages);
          <h2>Issues</h2>
 
 
-                    <select onChange={(event) =>  {this.sortedIssues(event.target.value)}}>
+                    {/* <select onChange={(event) =>  {this.sortedIssues(event.target.value)}}>
                         <option selected >Filter By</option>
-                        <option value="Date">Date</option>
-                        <option value="Priority">Priority</option>
-                    </select> 
+                        <option value="Al">Date</option>
+                    </select>  */}
 
                     
-                    <select onChange={(event) =>  {this.sortedIssues(event.target.value)}}>
-                        <option selected >Sort By</option>
+                    <select value={this.state.newSortedIssue} onChange={(event) =>  {this.setState({newSortedIssue: event.target.value})}}>
+                        <option value="" >Sort By</option>
                         <option value="Date">Date</option>
                         <option value="Priority">Priority</option>
                     </select>
               
+                    <Form.Group controlId="filtered-input">
+                          <Form.Label>Search</Form.Label>
+                          <Form.Control type="text" placeholder="Search" value={this.state.searchText} onChange={(event)=> this.setState({searchText: event.target.value})}/>
+                   </Form.Group>
+
                  <IssuesList allIssues={allIssuesJSX}></IssuesList>
 
         <Modal show={this.state.isModalOpen} onHide={this.handleClose}>
