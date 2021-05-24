@@ -32,6 +32,8 @@ userInfo = () => {
         password: this.state.password,
         address: this.state.address,
         city: this.state.city,
+        isCommitteeMember: true,
+        //check if committee member is true and and after sign up will be logged in as committee member
     }
    
     // check if inputs in obj not empty. if not add user in App
@@ -96,7 +98,8 @@ render(){
             </Form.Group>  <Form.Group controlId="formBasicEmail" style={{marginBottom: "10px"}}>
                 <Form.Label style={{fontSize: "15px"}}>Password:</Form.Label>
                 <Form.Control value={this.state.password} type="Password" placeholder="Password" onChange={(event) => {this.signUpInput('password',event.target.value)}}/>
-
+              
+                <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
             </Form.Group>  <Form.Group controlId="formBasicEmail" style={{marginBottom: "10px"}}>
                 <Form.Label style={{fontSize: "15px"}}>Address:</Form.Label>
                 <Form.Control value={this.state.address} type="text" placeholder="Address" onChange={(event) => {this.signUpInput('address',event.target.value)}}/>

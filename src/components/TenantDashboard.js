@@ -1,6 +1,6 @@
 import './tenantDashboard.css';
 import React from 'react';
-import { Accordion, Card, Button, Modal, Row, Col, Form } from 'react-bootstrap';
+import { Accordion, Card, Button, Modal, Row, Col, Form, InputGroup } from 'react-bootstrap';
 
 import 'bootstrap/dist/css/bootstrap.css';
 import IssuesList from './IssuesList';
@@ -38,12 +38,13 @@ class TenantDashboard extends React.Component{
           messageImage: null,
 
           // priorityCode for sort by priority number in json
-          priorityCode:"",
+          // priorityCode:"",
 
           newSortedIssue:'',
 
           searchText:"",
           
+    
         }
     }
 
@@ -90,7 +91,18 @@ class TenantDashboard extends React.Component{
     }
 
     saveModalInfo = () =>{
+
       //json keys: current state value in component
+      let priorityId = 0;
+      if( this.state.priority == "Normal" ){
+           priorityId = 1
+      }
+      else if ( this.state.priority == "Important"){  
+        priorityId = 2
+      }
+      else if ( this.state.priority == "Urgent"){  
+        priorityId = 3
+      }
       let newIssue = {
         issueTitle: this.state.Title,
         description: this.state.Description,
@@ -103,7 +115,9 @@ class TenantDashboard extends React.Component{
         timeStamp: moment(),
         //check moment
         userId: this.props.activeUser.id,
+        priorityCode: priorityId,
       }
+      // console.log(newIssue.proppriorityCode);
       console.log(newIssue.timeStamp.format('DD-MM-YYYY'));
   
       const editId = this.state.editId;
@@ -118,10 +132,11 @@ class TenantDashboard extends React.Component{
 
 
       //if: check if  newIssue.issueTitle  newIssue.description   newIssue.priority  exists
-      if( newIssue.issueTitle &&  newIssue.description){ 
+      // if( newIssue.issueTitle &&  newIssue.description){ 
         // passing editId to App.js
+       console.log(newIssue);
       this.props.addIssue(newIssue, editId);
-      }
+      // }
 
     }
     
@@ -256,18 +271,19 @@ render(){
       <Card.Body>
         <Row>
           <Col>
-          <img src={issue.image}/>
+          {(issue.image !== '' ) ?  <img className="image" src={issue.image}/> : <img className="image" src='https://st3.depositphotos.com/1322515/35964/v/600/depositphotos_359648638-stock-illustration-image-available-icon.jpg'/>}
+        
         </Col>
         <Col>
-        <p><strong>Description:</strong> {issue.description}</p> 
+        <p><strong>Description: </strong> {issue.description}</p> 
         
         <p><strong>Priority: </strong> {issue.priority}</p>
-
+  
         <p><strong>Issue Post Date: </strong>{ issue.timeStamp.format('DD-MM-YYYY') }</p>
         </Col>
-        </Row>
+       
         {/* <p>Committee Member Comment: {issue.committeeMemberComment}</p> */}
-
+        <Col>
         { (issue.userId === this.props.activeUser.id) ? ( 
           <div>
         <Button 
@@ -285,6 +301,8 @@ render(){
         </Button>
         </div>
            ) :  undefined }
+            </Col>
+            </Row>
       </Card.Body>
     </Accordion.Collapse>
          </Card>
@@ -303,13 +321,17 @@ console.log(this.props.allMessages);
   </Card.Header>
   <Accordion.Collapse eventKey="1">
     <Card.Body>
-      
+        <Row>
+        <Col>
+      <img src={message.image}/>
+      </Col>
+      <Col>
       <p><strong>Details:</strong> {message.details}</p> 
       
       <p><strong>Priority:</strong> {message.priority}</p>
-      
-      <img src={message.image}/>
-      
+      </Col>
+     
+      <Col>
       { (message.userId === this.props.activeUser.id) ? ( 
         <div>
       <Button
@@ -327,6 +349,8 @@ console.log(this.props.allMessages);
       </Button>
       </div>
          ) :  undefined }
+          </Col>
+          </Row>
     </Card.Body>
   </Accordion.Collapse>
        </Card>
@@ -372,6 +396,7 @@ console.log(this.props.allMessages);
                  <IssuesList allIssues={allIssuesJSX}></IssuesList>
 
         <Modal show={this.state.isModalOpen} onHide={this.handleClose}>
+        <Form noValidate validated={this.state.validated}>
             <Modal.Header closeButton>
             <Modal.Title>{this.state.editId > -1 ? `Edit Issue #${this.state.editId +1 }` : "Add Issue"}</Modal.Title>
             </Modal.Header>
@@ -380,21 +405,24 @@ console.log(this.props.allMessages);
                 <Form.Label column sm={2}>
                 Issue:
                 </Form.Label>
+              
                 <Col sm={10} >
+                <InputGroup hasValidation>
                     <Form.Control 
-                    required={true}
+                    required
                     type="text" 
                     placeholder= "Issue Title"
                      value={this.state.Title}
                      onChange={(event)=> {this.setState({Title: event.target.value})}}
                       />
+                    </InputGroup>
                 </Col>
                 <Form.Label column sm={2}>
                 Description:
                 </Form.Label>
                 <Col sm={10}>
                   <Form.Control  
-                   required={true} 
+                   required
                    as="textarea"
                     placeholder="description"
                     value={this.state.Description}
@@ -426,7 +454,7 @@ console.log(this.props.allMessages);
                  </Form.Control>
                 </Col>
 
-             
+          
             
             {/* </Form.Group> */}
                                                 
@@ -437,7 +465,9 @@ console.log(this.props.allMessages);
                 Save Changes
             </Button>
             </Modal.Body>
+            </Form>
         </Modal>
+        
             <Button style={{marginTop: "22px", marginBottom: "22px"}} variant="secondary" onClick={() => { this.openModal() } } >
                 Add Issue
             </Button>

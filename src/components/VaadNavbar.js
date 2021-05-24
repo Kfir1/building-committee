@@ -11,9 +11,10 @@ class VaadNavbar extends React.Component{
 
 render(){
     const login = ( ! this.props.activeUser) ? <Nav.Link href="/#/login"><strong>Login</strong></Nav.Link> : null
-    const signup = ( ! this.props.activeUser ) ? <Nav.Link href="/#/signup"><strong>Signup</strong></Nav.Link> : null
+    const signup = ( ! this.props.activeUser  ) ? <Nav.Link href="/#/signup"><strong>Signup</strong></Nav.Link> : null
     const Dashboard = (  this.props.activeUser) ? <Nav.Link href="/#/dashboard"><strong>Dashboard</strong></Nav.Link> : null
     const tenantsAccounts = ( this.props.activeUser && this.props.activeUser.isCommitteeMember  ) ?  <Nav.Link href="/#/tenantAccount"><strong>Tenant Account</strong></Nav.Link> : null
+    const voting = ( this.props.activeUser  ) ?  <Nav.Link href="/#/voting"><strong>voting</strong></Nav.Link> : null
 
     const userNameToShow = (  this.props.activeUser ) ? <Nav.Link> Hello {this.props.activeUser.name}</Nav.Link> : null
     const logout = (this.props.activeUser) ? <Nav.Link href="/#/login/" onClick={ () => this.props.logout()}><strong>Log out</strong></Nav.Link> : null
@@ -28,6 +29,7 @@ render(){
                 <Nav.Link href="/#/"><strong>Home</strong></Nav.Link>
                 {Dashboard}
                 {tenantsAccounts}
+                {voting}
             </Nav>
             <Nav className="ml-auto">
                  {/* <Nav.Link href="/#/login">Login</Nav.Link>

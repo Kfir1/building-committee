@@ -4,6 +4,12 @@ import { Accordion, Card, Button, Modal, Row, Col, Form } from 'react-bootstrap'
 import IssuesList from './IssuesList';
 
 
+import './CommitteeDashboard.css';
+
+
+import 'bootstrap/dist/css/bootstrap.css';
+
+
 
 class CommitteeDashboard extends React.Component{
     constructor(props){
@@ -147,13 +153,17 @@ render(){
     </Card.Header>
     <Accordion.Collapse eventKey="1">
       <Card.Body>
+        <Row>
+          <Col>
+      
+        {(issue.image !== '' ) ?  <img className="image" src={issue.image}/> : <img className="image" src='https://st3.depositphotos.com/1322515/35964/v/600/depositphotos_359648638-stock-illustration-image-available-icon.jpg'/>}
+        </Col>
+        <Col>
+        <p><strong>Description: </strong>{issue.description}</p> 
         
-        <p>Description: {issue.description}</p> 
-        
-        <p>Priority: {issue.priority}</p>
-        
-        <img src={issue.image}/>
-
+        <p><strong>Priority: </strong> {issue.priority}</p>
+        </Col>
+        <Col>
         { (issue.userId === this.props.activeUser.id) ? ( 
           // conditional ternary on button to show button only by user id
           <div>
@@ -179,7 +189,8 @@ render(){
           </Button>
             </div>
            )}
-  
+            </Col>
+        </Row>
       </Card.Body>
     </Accordion.Collapse>
          </Card>

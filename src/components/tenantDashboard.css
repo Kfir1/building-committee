@@ -15,6 +15,11 @@ img {
     width: 15rem;
 }
 
+.image {
+    width: 20rem;
+    height: 15rem;
+}
+
 /* .col-sm-10{
     margin-left: 1px;
 }  */
@@ -32,18 +37,18 @@ img {
 /* width: 16%; */
 /* }  */
 
-.search-icon {
-    /* width: 80%;
+/* .search-icon { */
+/* width: 80%;
     height: 25px;
     margin: 0 auto;
     border: none;
     /* <-- This thing here */
-    /* border: solid 1px #ccc;
+/* border: solid 1px #ccc;
     border-radius: 10px; */
 
-    /* width: 1.5rem; */
-    /* height: 1.2rem; */
-    /* position: absolute; */
-    /* float: right; */
-    /* background-image: url("https://cdn0.iconfinder.com/data/icons/very-basic-2-android-l-lollipop-icon-pack/24/search-512.png"); */
-}
+/* width: 1.5rem; */
+/* height: 1.2rem; */
+/* position: absolute; */
+/* float: right; */
+/* background-image: url("https://cdn0.iconfinder.com/data/icons/very-basic-2-android-l-lollipop-icon-pack/24/search-512.png"); */
+/* } */
