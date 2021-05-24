@@ -1,6 +1,6 @@
 [
     {  
-         "isCommitteeMember": true,
+        "isCommitteeMember": true,
         "id":1,
         "name": "John Doe (Committee Member)",
         "email": "skarlinski@gmail.com",
