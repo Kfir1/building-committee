@@ -136,11 +136,11 @@ render(){
           // id from  issues json object
             <Card key={issue.id}>
     <Card.Header>
-      <Accordion.Toggle as={Button} variant="link" eventKey="1">
-        { issue.issueTitle}   
+      <Accordion.Toggle as={Button} variant="link" eventKey={index+1}>
+      <h5>  { issue.issueTitle}   </h5> 
       </Accordion.Toggle>
     </Card.Header>
-    <Accordion.Collapse eventKey="1">
+    <Accordion.Collapse eventKey={index+1}>
       <Card.Body>
         <Row>
           <Col>
@@ -152,25 +152,9 @@ render(){
         
         <p><strong>Priority: </strong> <p>{issue.priority}</p></p>
         </Col>
-        <Col>
-        { (issue.userId === this.props.activeUser.id) && ( 
-          // conditional ternary on button to show button only by user id
-          <div>
-        <Button
-        style={{float:"right", cursor:"pointer"}}
-        onClick={() => this.openModal(index)}>
-          Edit
-        </Button>
-        <Button
-        variant="danger"
-        style={{float:"right", cursor:"pointer"}}
-        onClick={() => {   this.removeIssue(index); }}>
-          Remove
-        </Button>
-        </div>
-           )} 
+        <Col >
         {(
-            <Comments
+            <Comments className="comments"
               comments={issue.comments}
               issueId={index}
               addComment={this.props.addComment}
@@ -178,7 +162,30 @@ render(){
               activeUser={this.props.activeUser}
             />
         )}
-            </Col>
+        </Col>
+        <Col>
+        { (issue.userId === this.props.activeUser.id) && ( 
+          // conditional ternary on button to show button only by user id
+          <div>
+        <Button
+        style={{float:"right", cursor:"pointer"}}
+        onClick={() => this.openModal(index)}
+        className="btn-remove-edit"
+        >  
+          Edit
+        </Button>
+        <Button
+        variant="danger"
+        style={{float:"right", cursor:"pointer"}}
+        onClick={() => {   this.removeIssue(index); }}
+        className="btn-remove-edit"
+        >
+          Remove
+        </Button>
+        </div>
+           )} 
+        </Col>
+
         </Row>
       </Card.Body>
     </Accordion.Collapse>

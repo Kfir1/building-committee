@@ -72,8 +72,8 @@ class Comments extends React.Component{
         if(this.props.comments) {
             allComments = this.props.comments.map((comment, index) => { 
                 console.log(comment, this.props.activeUser.id);
-                return (<div>                                 
-                        <h6>Comment by: {this.props.getUserTitleByUserId(comment.userId)}</h6>
+                return (<div className="comments">                                 
+                        <h6> {this.props.getUserTitleByUserId(comment.userId)}</h6>
                         {/* get userId from json from app to get name  */}
                         <p>{comment.comment}</p>
                         { this.props.activeUser.id === comment.userId && <Button onClick={() => { this.openModal(index); }}>Edit</Button>}

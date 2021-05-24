@@ -265,7 +265,7 @@ render(){
             <Card key={issue.id}>
     <Card.Header>
       <Accordion.Toggle as={Button} variant="link" eventKey={index+1}>
-       {   issue.issueTitle  }  
+       <h5> {   issue.issueTitle  }  </h5>
       </Accordion.Toggle>
     </Card.Header>
     <Accordion.Collapse eventKey={index+1}>
@@ -275,7 +275,7 @@ render(){
           {(issue.image !== '' ) ?  <img className="image" src={issue.image}/> : <img className="image" src='https://st3.depositphotos.com/1322515/35964/v/600/depositphotos_359648638-stock-illustration-image-available-icon.jpg'/>}
         
         </Col>
-        <Col>
+        <Col >
         <p><strong>Description: </strong> <p>{issue.description}</p></p> 
         
         <p><strong>Priority: </strong> <p>{issue.priority}</p></p>
@@ -283,7 +283,20 @@ render(){
         <p><strong>Issue Post Date: </strong> <p>{ issue.timeStamp.format('DD-MM-YYYY') }</p></p>
         </Col>
        
-        {/* <p>Committee Member Comment: {issue.committeeMemberComment}</p> */}
+
+
+        <Col >{
+             (
+              <Comments className="comments"
+                comments={issue.comments}
+                issueId={index}
+                addComment={this.props.addComment}
+                getUserTitleByUserId={this.props.getUserTitleByUserId}
+                activeUser={this.props.activeUser}
+              />
+            )
+           }
+           </Col>
         <Col>
         { (issue.userId === this.props.activeUser.id) && ( 
           <div>
@@ -301,19 +314,9 @@ render(){
           Remove
         </Button>
         </div>
+        
            ) }
-           {
-             (
-              <Comments
-                comments={issue.comments}
-                issueId={index}
-                addComment={this.props.addComment}
-                getUserTitleByUserId={this.props.getUserTitleByUserId}
-                activeUser={this.props.activeUser}
-              />
-            )
-           }
-            </Col>
+           </Col>
             </Row>
       </Card.Body>
     </Accordion.Collapse>
@@ -328,7 +331,7 @@ console.log(this.props.allMessages);
           <Card key={message.id}>
   <Card.Header>
     <Accordion.Toggle as={Button} variant="link" eventKey={index+1}>
-      {   message.title  }   
+    <h5>  {   message.title  }    </h5>  
     </Accordion.Toggle>
   </Card.Header>
   <Accordion.Collapse eventKey={index+1}>

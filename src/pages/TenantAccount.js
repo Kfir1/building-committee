@@ -66,10 +66,10 @@ render(){
     </Card.Header>
     <Accordion.Collapse eventKey={index+1}>
       <Card.Body>
-            <p>User Name: {user.name}</p>
-           <p>Email: {user.email}</p>
-           <p>Password: {user.password}</p>
-           <p>Apartment Number: {user.aptNumber}</p>
+            <p><strong>User Name:</strong> <p>{user.name}</p></p>
+           <p><strong>Email:</strong> <p>{user.email}</p></p>
+           <p><strong>Password:</strong> <p>{user.password}</p></p>
+           <p><strong>Apartment Number:</strong> <p>{user.aptNumber}</p></p>
     </Card.Body>
     </Accordion.Collapse>
   </Card>
@@ -81,7 +81,7 @@ render(){
         <div >
       
                 <Form className="form">
-                <h1 style={{margin: "0px 0 20px 0"}}>Tenants Account</h1>
+                <h2 style={{margin: "0px 0 20px 0"}}>Create Tenants Account</h2>
             <Form.Group controlId="formBasicEmail" style={{marginBottom: "10px"}} >
                 <Form.Label style={{fontSize: "15px"}}>Name:</Form.Label>
                 <Form.Control value={this.state.name} type="text" placeholder="Enter Name" onChange={(event) => {this.tenantsAccountInput('name',event.target.value)}}/>
