@@ -159,9 +159,9 @@ render(){
         {(issue.image !== '' ) ?  <img className="image" src={issue.image}/> : <img className="image" src='https://st3.depositphotos.com/1322515/35964/v/600/depositphotos_359648638-stock-illustration-image-available-icon.jpg'/>}
         </Col>
         <Col>
-        <p><strong>Description: </strong>{issue.description}</p> 
+        <p><strong>Description: </strong> <p>{issue.description}</p></p> 
         
-        <p><strong>Priority: </strong> {issue.priority}</p>
+        <p><strong>Priority: </strong> <p>{issue.priority}</p></p>
         </Col>
         <Col>
         { (issue.userId === this.props.activeUser.id) ? ( 
@@ -297,7 +297,7 @@ render(){
             </Modal.Body>
         </Modal>
 
-            <Button style={{marginTop: "22px", marginBottom: "22px"}} variant="secondary" onClick={this.openModal} >
+            <Button style={{marginTop: "22px", marginBottom: "22px"}} variant="success" onClick={this.openModal} >
                 Add Issue
             </Button>
         </div>

@@ -20,11 +20,11 @@
     {
         "userId": 2,
         "id": 2,
-        "issueTitle": "Leakage from the ceiling",
-        "description": "Leakage from the ceiling at apartment number 13",
+        "issueTitle": "Garbage on buliding floor.",
+        "description": "Please stop leaving garbage on the buliding floor.",
         "priority": "Normal",
         "priorityCode": 1,
-        "image": "https://www.roundhayroofing.co.uk/wp-content/uploads/2016/01/roof-leaking-water-damage.jpg",
+        "image": "https://accuform-img2.akamaized.net/files/damObject/Image/huge/MHSK966.jpg",
         "committeeMemberComment":"comment",
         "comments": [
             { 
@@ -39,11 +39,11 @@
     {
         "userId": 2,
         "id": 3,
-        "issueTitle": "Broken stairs",
-        "description": "Broken Stairs on third floor",
+        "issueTitle": "Noise",
+        "description": "Please stop making noise late at night",
         "priority": "Important",
         "priorityCode": 2,
-        "image": "https://image.shutterstock.com/image-photo/concrete-stairs-broken-260nw-1083005699.jpg",
+        "image": "https://thumbs.dreamstime.com/z/noisy-neighbor-26819185.jpg",
         "committeeMemberComment":"comment",
         "comments": [
             { 

@@ -264,7 +264,7 @@ render(){
             <Card key={issue.id}>
     <Card.Header>
       <Accordion.Toggle as={Button} variant="link" eventKey={index+1}>
-        {   issue.issueTitle  }  
+       {   issue.issueTitle  }  
       </Accordion.Toggle>
     </Card.Header>
     <Accordion.Collapse eventKey={index+1}>
@@ -275,11 +275,11 @@ render(){
         
         </Col>
         <Col>
-        <p><strong>Description: </strong> {issue.description}</p> 
+        <p><strong>Description: </strong> <p>{issue.description}</p></p> 
         
-        <p><strong>Priority: </strong> {issue.priority}</p>
+        <p><strong>Priority: </strong> <p>{issue.priority}</p></p>
   
-        <p><strong>Issue Post Date: </strong>{ issue.timeStamp.format('DD-MM-YYYY') }</p>
+        <p><strong>Issue Post Date: </strong> <p>{ issue.timeStamp.format('DD-MM-YYYY') }</p></p>
         </Col>
        
         {/* <p>Committee Member Comment: {issue.committeeMemberComment}</p> */}
@@ -315,20 +315,21 @@ console.log(this.props.allMessages);
         // id from  issues json object
           <Card key={message.id}>
   <Card.Header>
-    <Accordion.Toggle as={Button} variant="link" eventKey="1">
+    <Accordion.Toggle as={Button} variant="link" eventKey={index+1}>
       {   message.title  }   
     </Accordion.Toggle>
   </Card.Header>
-  <Accordion.Collapse eventKey="1">
+  <Accordion.Collapse eventKey={index+1}>
     <Card.Body>
         <Row>
         <Col>
-      <img src={message.image}/>
+      
+      {(message.image !=='') ? <img className="image" src={message.image}/> : <img className="image" src="https://st3.depositphotos.com/1322515/35964/v/600/depositphotos_359648638-stock-illustration-image-available-icon.jpg"/>}
       </Col>
       <Col>
-      <p><strong>Details:</strong> {message.details}</p> 
+      <p><strong>Details:</strong> <p>{message.details}</p></p> 
       
-      <p><strong>Priority:</strong> {message.priority}</p>
+      <p><strong>Priority:</strong> <p>{message.priority}</p></p>
       </Col>
      
       <Col>
@@ -468,7 +469,7 @@ console.log(this.props.allMessages);
             </Form>
         </Modal>
         
-            <Button style={{marginTop: "22px", marginBottom: "22px"}} variant="secondary" onClick={() => { this.openModal() } } >
+            <Button style={{marginTop: "22px", marginBottom: "22px"}} variant="success" onClick={() => { this.openModal() } } >
                 Add Issue
             </Button>
      
@@ -488,7 +489,7 @@ console.log(this.props.allMessages);
 
 
 
-                      <h1> {activeUser} </h1>
+                      {/* <h1> {activeUser} </h1> */}
                        <h2>Messages</h2>
       
                  <MessagesList allMessages={allMessagesJSX}></MessagesList>
@@ -555,7 +556,7 @@ console.log(this.props.allMessages);
             </Button>
             </Modal.Body>
         </Modal>
-            <Button style={{marginTop: "22px", marginBottom: "22px"}} variant="secondary" onClick={this.openModalMessage} >
+            <Button style={{marginTop: "22px", marginBottom: "22px"}} variant="success" onClick={this.openModalMessage} >
                 Add Message
             </Button>
      

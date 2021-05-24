@@ -89,6 +89,7 @@ class App extends React.Component{
         if ( typeof index === "undefined" ){
           commentIndex = -1;
         }
+        
         //TODO: write the logic of the function. base it on addIssue.
       }
 
