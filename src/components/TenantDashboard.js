@@ -221,33 +221,7 @@ class TenantDashboard extends React.Component{
          
         });
     }
-
-    sortedIssues = (event) => {
-      // let  newSortedIssue = { allIssues: this.state.newSortedIssue};
-        console.log(event);
-      if(event === "Priority"){
-         
-          // this.setState({
-         
-          //    allIssues :  this.props.allIssues.sort((a,b)=> b.priorityCode-a.priorityCode) 
-          //   // }
-          //   }) 
-      }
-      // this.props.sortedIssuesAdd(newSortedIssue);
-  }
-
   
-  //   filterIssues = (event) => {
-
-  //     console.log(event);
-  //   if(event === "Priority"){
-
-  //       this.setState({
-  //         allIssues :  this.props.allIssues.filter((a,b)=> b.priorityCode-a.priorityCode) 
-  //       }) 
-  //   }
-  // }
-    
 render(){
   let sortedIssues = [];
   if(this.state.newSortedIssue == "Priority"){
@@ -374,18 +348,21 @@ console.log(this.props.allMessages);
                         <option value="Al">Date</option>
                     </select>  */}
 
-                    
-                    <select value={this.state.newSortedIssue} onChange={(event) =>  {this.setState({newSortedIssue: event.target.value})}}>
+                    <Row>
+                      <Col>
+                    <Form.Control as="select" className="sort" value={this.state.newSortedIssue} onChange={(event) =>  {this.setState({newSortedIssue: event.target.value})}}>
                         <option value="" >Sort By</option>
                         <option value="Date">Date</option>
                         <option value="Priority">Priority</option>
-                    </select>
-              
+                    </Form.Control>
+                    </Col>
+                    <Col>
                     <Form.Group controlId="filtered-input">
-                          <Form.Label>Search</Form.Label>
+                          <Form.Label></Form.Label>
                           <Form.Control type="text" placeholder="Search" value={this.state.searchText} onChange={(event)=> this.setState({searchText: event.target.value})}/>
                    </Form.Group>
-
+                   </Col>
+                   </Row>
                  <IssuesList allIssues={allIssuesJSX}></IssuesList>
 
         <Modal show={this.state.isModalOpen} onHide={this.handleClose}>

@@ -58,15 +58,15 @@ userInfo = () => {
 
 render(){
     // get the list of registered users
-   const allUsers = this.props.allUsers.map((user)=>{
-       return <tr>
-           <td>{user.name}</td>
-           <td>{user.email}</td>
-           <td>{user.password}</td>
-           <td>{user.address}</td>
-           <td>{user.city}</td>
-       </tr>
-   });
+//    const allUsers = this.props.allUsers.map((user)=>{
+//        return <tr>
+//            <td>{user.name}</td>
+//            <td>{user.email}</td>
+//            <td>{user.password}</td>
+//            <td>{user.address}</td>
+//            <td>{user.city}</td>
+//        </tr>
+//    });
 <Accordion defaultActiveKey="0">
   <Card>
     <Card.Header>
@@ -113,7 +113,7 @@ render(){
             </Button>
             </Form>
       
-            <div> { allUsers}</div>
+            {/* <div> { allUsers}</div> */}
     </div>
     )
 }
