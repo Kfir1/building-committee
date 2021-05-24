@@ -9,7 +9,7 @@ class TenantAccount extends React.Component{
     this.state = {
         name: '',
         email: '',
-        password: 'Aa',
+        password: 'abc',
         aptNumber:'',
     }
 } 
@@ -66,10 +66,10 @@ render(){
     </Card.Header>
     <Accordion.Collapse eventKey={index+1}>
       <Card.Body>
-            <p>{user.name}</p>
-           <p>{user.email}</p>
-           <p>{user.password}</p>
-           <p>{user.aptNumber}</p>
+            <p>User Name: {user.name}</p>
+           <p>Email: {user.email}</p>
+           <p>Password: {user.password}</p>
+           <p>Apartment Number: {user.aptNumber}</p>
     </Card.Body>
     </Accordion.Collapse>
   </Card>
@@ -97,7 +97,7 @@ render(){
 
             </Form.Group>  <Form.Group controlId="formBasicEmail" style={{marginBottom: "10px"}}>
                 <Form.Label style={{fontSize: "15px"}}>Apartment Number:</Form.Label>
-                <Form.Control value={this.state.aptNumber} type="text" placeholder="Apartment Number" onChange={(event) => {this.tenantsAccountInput('aptNumber',event.target.value)}}/>
+                <Form.Control value={this.state.aptNumber} type="number" placeholder="Apartment Number" onChange={(event) => {this.tenantsAccountInput('aptNumber',event.target.value)}}/>
 
             </Form.Group>
  

@@ -350,16 +350,22 @@ console.log(this.props.allMessages);
 
                     <Row>
                       <Col>
-                    <Form.Control as="select" className="sort" value={this.state.newSortedIssue} onChange={(event) =>  {this.setState({newSortedIssue: event.target.value})}}>
+                    <Form.Control style={{backgroundColor:"white"}}  as="select" className="sort" value={this.state.newSortedIssue} onChange={(event) =>  {this.setState({newSortedIssue: event.target.value})}}>
                         <option value="" >Sort By</option>
                         <option value="Date">Date</option>
                         <option value="Priority">Priority</option>
                     </Form.Control>
                     </Col>
                     <Col>
-                    <Form.Group controlId="filtered-input">
-                          <Form.Label></Form.Label>
-                          <Form.Control type="text" placeholder="Search" value={this.state.searchText} onChange={(event)=> this.setState({searchText: event.target.value})}/>
+                    <Form.Group controlId="filtered-input" >
+                          {/* <Form.Label></Form.Label> */}
+                          {/* <button disabled className="search-icon" variant="light">
+                            <img className="search-icon" src="https://cdn0.iconfinder.com/data/icons/very-basic-2-android-l-lollipop-icon-pack/24/search-512.png"/>
+                            </button> */}
+                          <Form.Control 
+                          style={{backgroundImage: "url(https://cdn0.iconfinder.com/data/icons/very-basic-2-android-l-lollipop-icon-pack/24/search-512.png)",
+                           position:'right',backgroundSize:'20px',backgroundRepeat:'no-repeat',borderRadius:'8px',backgroundPosition:'right'}}
+                            type="text" placeholder="Search" value={this.state.searchText} onChange={(event)=> this.setState({searchText: event.target.value})}/>
                    </Form.Group>
                    </Col>
                    </Row>

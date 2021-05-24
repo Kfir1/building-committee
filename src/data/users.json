@@ -7,7 +7,7 @@
         "password": "123",
         "address": "even gvirol 23",
         "city": "tel aviv",
-        "apartment": "8"
+        "aptNumber": "8"
     },
     {
         "isCommitteeMember": false,
@@ -17,7 +17,7 @@
         "password": "abc",
         "address": "even gvirol 23",
         "city": "tel aviv",
-        "apartment": "13"
+        "aptNumber": "13"
     },
     {
         "isCommitteeMember": false,
@@ -27,6 +27,6 @@
         "password": "abc",
         "address": "even gvirol 23",
         "city": "tel aviv",
-        "apartment": "4"
+        "aptNumber": "4"
     }
 ]
