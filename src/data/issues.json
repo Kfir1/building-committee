@@ -8,13 +8,7 @@
         "priorityCode": 3,
         "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4e0sWHoG9BJ8GHhnTyeeCHfU8iFZ7usrvZA&usqp=CAU",
         "committeeMemberComment":"comment",
-        "comments": [
-            { 
-                "userId": 1, 
-                "id": 1,
-                "comment": "Please remove this leakage indefenetly"
-            }
-        ],
+        "comments": [],
         "timeStamp":"2021-04-01"
     },
     {
@@ -26,13 +20,7 @@
         "priorityCode": 1,
         "image": "https://accuform-img2.akamaized.net/files/damObject/Image/huge/MHSK966.jpg",
         "committeeMemberComment":"comment",
-        "comments": [
-            { 
-                "userId": 1, 
-                "id": 1,
-                "comment": "Please remove this leakage indefenetly"
-            }
-        ],
+        "comments": [],
         "timeStamp": "2021-02-01"
 
     },
@@ -45,13 +33,7 @@
         "priorityCode": 2,
         "image": "https://thumbs.dreamstime.com/z/noisy-neighbor-26819185.jpg",
         "committeeMemberComment":"comment",
-        "comments": [
-            { 
-                "userId": 1, 
-                "id": 1,
-                "comment": "Please remove this leakage indefenetly"
-            }
-        ],
+        "comments": [],
         "timeStamp":"2021-03-05"
    
     }

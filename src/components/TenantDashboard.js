@@ -7,6 +7,7 @@ import IssuesList from './IssuesList';
 import MessagesList from './MessagesList'
 import AddIssue from './addIssue';
 import moment from 'moment';
+import Comments from './Comments';
 
 // another solution for sort priority selection 
 // const priorityCodes = {
@@ -284,7 +285,7 @@ render(){
        
         {/* <p>Committee Member Comment: {issue.committeeMemberComment}</p> */}
         <Col>
-        { (issue.userId === this.props.activeUser.id) ? ( 
+        { (issue.userId === this.props.activeUser.id) && ( 
           <div>
         <Button 
         className="btn-tenant-dash"
@@ -300,7 +301,18 @@ render(){
           Remove
         </Button>
         </div>
-           ) :  undefined }
+           ) }
+           {
+             (
+              <Comments
+                comments={issue.comments}
+                issueId={index}
+                addComment={this.props.addComment}
+                getUserTitleByUserId={this.props.getUserTitleByUserId}
+                activeUser={this.props.activeUser}
+              />
+            )
+           }
             </Col>
             </Row>
       </Card.Body>

@@ -82,16 +82,49 @@ class App extends React.Component{
         })
       }
       //issueIndex is the index of the issue inside the state of issues
-      //comment is the description of the comment from the textbox (html)
+      //addComment is the description of the comment from the textbox (html)
       //commentIndex is a non-mandatory parameter. index of the comment if we are in edit mode.
       // pass the addComment function down the props, all the way into CommiteeDashboard and TenantDashboard. 
-      addComment = (issueIndex, comment, commentIndex) => {
-        if ( typeof index === "undefined" ){
+      addComment = (issueIndex, addComment, commentIndex) => {
+        //issueIndex  is for knowing which issue object to update. addcomment is an object with the comment and the user id, commentIndex is a non-mandatory parameter. index of the comment if we are in edit mode. 
+        if ( typeof issueIndex === "undefined" ){
+        //  throw Error("issueIndex is mandatory");
+        }
+        if(typeof commentIndex === "undefined") {
           commentIndex = -1;
         }
+        if(issueIndex > -1) {
+          console.log("commentIndex", commentIndex);
+          this.setState({
+            allIssues: this.state.allIssues.map((issue,rowIndex) =>{
+              if (rowIndex === issueIndex) {
+                if(commentIndex >  -1) {
+                  //edit comment by commentIndex. edit the comment with the one from the parameter addComment. 
+                  issue.comments[commentIndex].comment = addComment.comment;
+                } else {
+                  // add new comment to json
+                  issue.comments = issue.comments.concat(addComment);
+                }
+                return issue;
+              } 
+              else {
+                return issue;
+              } 
+            })
+          });
+        }
+      }
+
+      getUserTitleByUserId  = (id) => {
+        // findIndex finds the user object's index that has a property id with the value of the id parameter.
+        const indexOfUserInUsersArray = jsonData.findIndex(( (user) => user.id === id));
+        // returns the object name by index perior found userobject.
+        return jsonData[indexOfUserInUsersArray].name;
+      }
         
         //TODO: write the logic of the function. base it on addIssue.
-      }
+      
+      
 
       // newIssue is new object, index is the place
       addIssue = (newIssue, index) => {
@@ -207,6 +240,8 @@ class App extends React.Component{
                           allMessages={this.state.allMessages} 
                           addMessage={this.addMessage}
                           removeMessage={this.removeMessage}
+                          addComment={this.addComment}
+                          getUserTitleByUserId={this.getUserTitleByUserId}
                           >
                           </Dashboard>
                         </Route>

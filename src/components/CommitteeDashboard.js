@@ -8,6 +8,7 @@ import './CommitteeDashboard.css';
 
 
 import 'bootstrap/dist/css/bootstrap.css';
+import Comments from './Comments';
 
 
 
@@ -113,26 +114,14 @@ class CommitteeDashboard extends React.Component{
         Description: editDescription,
         priority: editPriority,
         image: editImage,
-        comment: editCommitteeMemberComment
          
       });
     
-    }
-    commentIssue = (id) => {
-      this.setState({
-        isModalCommentOpen: true,
-        editId: id
-      });
-
     }
 
     handleCloseComment = () => {
       this.setState({ isModalCommentOpen: false });
 
-    }
-    saveComment = () => {
-   
-      this.props.addCommentForIssue( this.state.CommitteeMemberComment, this.state.editId);
     }
 
       
@@ -164,7 +153,7 @@ render(){
         <p><strong>Priority: </strong> <p>{issue.priority}</p></p>
         </Col>
         <Col>
-        { (issue.userId === this.props.activeUser.id) ? ( 
+        { (issue.userId === this.props.activeUser.id) && ( 
           // conditional ternary on button to show button only by user id
           <div>
         <Button
@@ -179,16 +168,16 @@ render(){
           Remove
         </Button>
         </div>
-           ) :  (
-            <div>
-            <Button
-          variant="success"
-          style={{float:"right", cursor:"pointer"}}
-          onClick={() => {   this.commentIssue(index); }}>
-            Comment
-          </Button>
-            </div>
-           )}
+           )} 
+        {(
+            <Comments
+              comments={issue.comments}
+              issueId={index}
+              addComment={this.props.addComment}
+              getUserTitleByUserId={this.props.getUserTitleByUserId}
+              activeUser={this.props.activeUser}
+            />
+        )}
             </Col>
         </Row>
       </Card.Body>

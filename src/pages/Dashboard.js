@@ -53,6 +53,8 @@ class Dashboard extends React.Component {
                 activeUser={this.props.activeUser}
                 allMessages={this.props.allMessages}
                 removeMessage={this.props.removeMessage}
+                addComment={this.props.addComment}
+                getUserTitleByUserId={this.props.getUserTitleByUserId}
             ></CommitteeDashboard>
         }
         else if (this.props.activeUser) {
@@ -65,6 +67,8 @@ class Dashboard extends React.Component {
                 addMessage={this.props.addMessage}
                 removeMessage={this.props.removeMessage}
                 sortedIssuesAdd={this.props.sortedIssuesAdd}
+                addComment={this.props.addComment}
+                getUserTitleByUserId={this.props.getUserTitleByUserId}
             >
             </TenantDashboard>
         }
