@@ -33,7 +33,6 @@ handleLogin = () => {
 
     if(foundUser) {
         this.props.login(foundUser);
-        alert("aaa");
         window.location.href = '#/dashboard';
     }
     else{
