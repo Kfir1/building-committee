@@ -33,7 +33,7 @@ handleLogin = () => {
 
     if(foundUser) {
         this.props.login(foundUser);
-        window.location.href = '/#/dashboard';
+        window.location.href = '#/dashboard';
     }
     else{
         alert(" Incorrect Email or Password");
