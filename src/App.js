@@ -206,19 +206,19 @@ class App extends React.Component{
       render(){
             return (
               <HashRouter>
-                      <Route exact path={['/', '/login', '/Signup','/dashboard','/tenantAccount']}>
+                      <Route exact path={['#/', '#/login', '#/Signup','#/dashboard','#/tenantAccount']}>
                           <VaadNavbar
                           activeUser={this.state.activeUser}
                           logout={this.logout}
                           ></VaadNavbar>
                       </Route>
                       <Container>
-                         <Route exact path="/">
+                         <Route exact path="#/">
                           <HomePage>
 
                           </HomePage>
                         </Route>
-                        <Route exact path="/Signup">
+                        <Route exact path="#/Signup">
                           <Signup
                             allUsers={this.state.allUsers}
                             addUser={this.addUser}
@@ -229,7 +229,7 @@ class App extends React.Component{
 
                           </MessagePage>
                         </Route> */}
-                           <Route exact path="/dashboard">
+                           <Route exact path="#/dashboard">
 
                           <Dashboard 
                           activeUser={this.state.activeUser}
@@ -245,14 +245,14 @@ class App extends React.Component{
                           >
                           </Dashboard>
                         </Route>
-                        <Route exact path="/login">
+                        <Route exact path="#/login">
                             <Login
                             login={this.login}
                             allUsers={this.state.allUsers}
                             sortedIssuesAdd={this.sortedIssuesAdd}
                             ></Login>
                         </Route>
-                        <Route exact path="/tenantAccount">
+                        <Route exact path="#/tenantAccount">
                             <TenantAccount
                             allUsers={this.state.allUsers}
                             addUser={this.addUser}
